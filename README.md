@@ -1,6 +1,6 @@
 # Eve Fitting Web Component
 
-![image of fitting wheel](images/preview.png)
+![image of fitting wheel](images/preview.png | width=500)
 
 ## Overview
 A web component to render an EFT format fit into a visual
