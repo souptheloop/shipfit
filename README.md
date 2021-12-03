@@ -1,4 +1,4 @@
-# Eve Fitting Web Component
+# Ship Fit - A Web Component for Eve Fittings
 
 <img alt="image of fitting wheel" width="300px" src="images/preview.png" />
 
@@ -7,6 +7,7 @@ A web component to render an EFT format fit into a visual
 representation of the ship with the fit
 
 ## Examples
+[JSFiddle Live Example](https://jsfiddle.net/souptheloop/k76u48ab/9/)
 
 ### Setup
 Using the published bundle from unpkg
