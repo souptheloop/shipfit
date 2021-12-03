@@ -55,9 +55,7 @@ class Fitting extends HTMLElement implements FittingElement {
 
     getCss() {
         return `   
-        .wrapper {
-          color: red;
-        }
+        
         .fitting-circle {
           max-width: 500px;  
         }

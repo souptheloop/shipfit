@@ -45,24 +45,24 @@ function getSlots(fit: Fit) {
 
     const boxes = allSlotImages.map((imgDetails, i) => {
 
-        if(!imgDetails) return; //No slot (different to empty slot)
+        if (!imgDetails) return; //No slot (different to empty slot)
 
         const rotateAmount = 360 / slotCount;
         const offset = rotateAmount * 3; //shift the first slot to the left 3 positions otherwise high slots would start in the 12 o'clock position
         const rotate = (i * rotateAmount) - offset;
 
-        // Rotate the image back so it's vertical, +3 to account for the fact we start 3 to the left
+        // Rotate the image back so it's vertical
         const counterRotate = -rotate;
         let image = imgDetails.filled ?
-            `<image width="6" height="6" x="46" y="12" transform="rotate(${counterRotate} 49 15)" xlink:href="${imgDetails.image}" />`
+            `<image width="6" height="6" x="46" y="12" transform="rotate(${rotate} 50 50) rotate(${counterRotate} 49 15) " xlink:href="${imgDetails.image}" >
+<title>${imgDetails.name}</title>
+</image>`
             : "";
 
         //#fitting-box defined later on in svg
         return `
-<g  transform="rotate(${rotate} 50 50)">
-    <use x="45" y="11" id="slot-${i}" xlink:href="#fitting-box" ></use>
+    <use x="45" y="11" id="slot-${i}" transform="rotate(${rotate} 50 50)" xlink:href="#fitting-box" ></use>
     ${image}
-</g>
 `
     });
 
@@ -73,4 +73,4 @@ function getSlots(fit: Fit) {
 }
 
 const toImageUrl = (s: Slot) => s.filled ?
-    {image: `https://images.evetech.net/types/${s.module.type}/icon?size=32`, filled: true} : {filled: false};
+    {image: `https://images.evetech.net/types/${s.module.type}/icon?size=32`, name:s.module.name, filled: true} : {filled: false};
