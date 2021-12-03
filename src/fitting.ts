@@ -24,10 +24,6 @@ class Fitting extends HTMLElement implements FittingElement {
     constructor() {
         super();
         this.root = this.attachShadow({mode: "open"});
-        // this.root.addEventListener('mousedown', (event) => {
-        //     this.handleClick(event, true);
-        //     event.preventDefault();
-        // });
         this.root.innerHTML = "";
     }
 
@@ -54,15 +50,6 @@ class Fitting extends HTMLElement implements FittingElement {
     }
 
     getHtml(fit: Fit) {
-        const highSlotHtml = fit.highSlots.map((slot) => {
-            switch (slot.filled) {
-                case true:
-                    return `<li>${slot.module.name} <img src="https://images.evetech.net/types/${slot.module.type}/icon"/></li>`;
-                case false:
-                    return `<li>Empty</li>`;
-            }
-        });
-
         return generateFittingWheelSvg(fit)
     }
 
@@ -74,14 +61,8 @@ class Fitting extends HTMLElement implements FittingElement {
         .fitting-circle {
           max-width: 500px;  
         }
-        #slot-1 {
-         fill: url("https://images.evetech.net/types/2937/icon");
-         }
         `
-
     }
-
 }
-
 
 customElements.define("ship-fit", Fitting);
