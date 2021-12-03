@@ -59,5 +59,5 @@ class Fitting extends HTMLElement {
         `;
     }
 }
-customElements.define("eve-fit", Fitting);
+customElements.define("ship-fit", Fitting);
 //# sourceMappingURL=fitting.js.map

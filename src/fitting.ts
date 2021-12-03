@@ -84,4 +84,4 @@ class Fitting extends HTMLElement implements FittingElement {
 }
 
 
-customElements.define("eve-fit", Fitting);
+customElements.define("ship-fit", Fitting);

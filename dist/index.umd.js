@@ -27517,6 +27517,6 @@
         `;
         }
     }
-    customElements.define("eve-fit", Fitting);
+    customElements.define("ship-fit", Fitting);
 
 })));

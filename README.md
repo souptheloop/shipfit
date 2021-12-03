@@ -12,8 +12,8 @@ representation of the ship with the fit
 ### Setup
 Using the published bundle from unpkg
 ```html
-<script src="https://unpkg.com/shipfit@0.0.1/dist/index.umd.min.js"></script>
-<eve-fit id="fit">
+<script src="https://unpkg.com/shipfit@0.0.2/dist/index.umd.min.js"></script>
+<ship-fit>
 [Revelation, Revelation]
 Capital I-a Enduring Armor Repairer
 Corpum A-Type Multispectrum Energized Membrane
@@ -38,7 +38,7 @@ Quad Mega Pulse Laser II,Conflagration XL
 Capital Energy Ambit Extension I
 Capital Energy Ambit Extension I
 Capital Energy Burst Aerator II
-</eve-fit>
+</ship-fit>
 ```
 
 # Caveats
