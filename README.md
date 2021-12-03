@@ -13,7 +13,6 @@ representation of the ship with the fit
 Using the published bundle from unpkg
 ```html
 <script src="https://unpkg.com/shipfit@0.0.1/dist/index.umd.min.js"></script>
-
 <eve-fit id="fit">
 [Revelation, Revelation]
 Capital I-a Enduring Armor Repairer
