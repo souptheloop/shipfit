@@ -12,29 +12,32 @@ representation of the ship with the fit
 ### Setup
 Using the published bundle from unpkg
 ```html
-<!--<script src=""></script>  -->
+<script src="https://unpkg.com/shipfit@1.0.3/dist/index.umd.min.js"></script>
+
 <eve-fit id="fit">
-    [Stabber, xlasb brawl]
+[Revelation, Revelation]
+Capital I-a Enduring Armor Repairer
+Corpum A-Type Multispectrum Energized Membrane
+Corpum A-Type Multispectrum Energized Membrane
+Domination Tracking Enhancer
+Imperial Navy Heat Sink
+[Empty Low Slot]
+Imperial Navy Heat Sink
+Reactive Armor Hardener
 
-    Damage Control II
-    Gyrostabilizer II
-    Fourier Compact Tracking Enhancer
-    Reactor Control Unit II
+Capital Capacitor Booster I
+Heavy Stasis Grappler II
+Shadow Serpentis Tracking Computer,Tracking Speed Script
+Tracking Computer II,Tracking Speed Script
 
-    50MN Quad LiF Restrained Microwarpdrive
-    Faint Epsilon Scoped Warp Scrambler
-    X-Large Ancillary Shield Booster, Navy Cap Booster 400
-    Eutectic Compact Cap Recharger
+Abyssal Siege Module
+Corpus X-Type Heavy Energy Neutralizer
+Quad Mega Pulse Laser II,Conflagration XL
+Quad Mega Pulse Laser II,Conflagration XL
+Quad Mega Pulse Laser II,Conflagration XL
 
-    Dual 180mm AutoCannon II, Hail M
-    Dual 180mm AutoCannon II, Hail M
-    [Empty High Slot]
-    Dual 180mm AutoCannon II, Hail M
-    Small Infectious Scoped Energy Neutralizer
-    Small Infectious Scoped Energy Neutralizer
-
-    Medium Processor Overclocking Unit I
-    Medium EM Shield Reinforcer I
-    Medium Thermal Shield Reinforcer I
+Capital Energy Ambit Extension I
+Capital Energy Ambit Extension I
+Capital Energy Burst Aerator II
 </eve-fit>
 ```
