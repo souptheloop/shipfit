@@ -102,6 +102,22 @@ describe("Fitting Parser", () => {
             expect(fit.subsystemSlots[0].filled).toBeFalsy();
         });
 
+        it("Allows for empty slots case insensitive", () => {
+            const fit = new FittingParser().parse(eftFit("my fit", "Caracal",
+                eftSlot("[Empty High slot]", ""),
+                eftSlot("[Empty Med slot]", ""),
+                eftSlot("[Empty Low slot]", ""),
+                eftSlot("[Empty Rig slot]", ""),
+                eftSlot("[Empty Subsystem slot]", ""),
+            ));
+
+            expect(fit.highSlots[0].filled).toBeFalsy();
+            expect(fit.midSlots[0].filled).toBeFalsy();
+            expect(fit.lowSlots[0].filled).toBeFalsy();
+            expect(fit.rigSlots[0].filled).toBeFalsy();
+            expect(fit.subsystemSlots[0].filled).toBeFalsy();
+        });
+
         it("Allows slots to be listed in any order", () => {
             const fit = new FittingParser().parse(eftFit("my fit", "Caracal",
                 eftSlot("Proteus Defensive - Covert Reconfiguration", ""),

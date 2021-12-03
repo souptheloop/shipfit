@@ -74,12 +74,12 @@ export class FittingParser {
         let cargo = false;
 
         eftFit.slots.forEach((eftSlot) => {
-            switch(eftSlot.module) {
-                case "[Empty High Slot]": fit.highSlots.push({filled: false}); return;
-                case "[Empty Med Slot]": fit.midSlots.push({filled: false}); return;
-                case "[Empty Low Slot]": fit.lowSlots.push({filled: false}); return;
-                case "[Empty Rig Slot]": fit.rigSlots.push({filled: false}); return;
-                case "[Empty Subsystem Slot]": fit.subsystemSlots.push({filled: false}); return;
+            switch(eftSlot.module.toLowerCase()) {
+                case "[empty high slot]": fit.highSlots.push({filled: false}); return;
+                case "[empty med slot]": fit.midSlots.push({filled: false}); return;
+                case "[empty low slot]": fit.lowSlots.push({filled: false}); return;
+                case "[empty rig slot]": fit.rigSlots.push({filled: false}); return;
+                case "[empty subsystem slot]": fit.subsystemSlots.push({filled: false}); return;
             }
 
             if(cargo) {
