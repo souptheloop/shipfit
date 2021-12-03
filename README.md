@@ -40,3 +40,8 @@ Capital Energy Ambit Extension I
 Capital Energy Burst Aerator II
 </eve-fit>
 ```
+
+# Caveats
+* If you use this in an environment where the fitting input is untrusted, 
+you should ensure that input has been sanitized for XSS and other script injection / vulnerabilities
+before it is placed into this component.
