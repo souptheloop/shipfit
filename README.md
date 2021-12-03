@@ -12,7 +12,7 @@ representation of the ship with the fit
 ### Setup
 Using the published bundle from unpkg
 ```html
-<script src="https://unpkg.com/shipfit@0.0.2/dist/index.umd.min.js"></script>
+<script src="https://unpkg.com/shipfit@0.0.3/dist/index.umd.min.js"></script>
 <ship-fit>
 [Revelation, Revelation]
 Capital I-a Enduring Armor Repairer
