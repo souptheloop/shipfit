@@ -12,7 +12,7 @@ representation of the ship with the fit
 ### Setup
 Using the published bundle from unpkg
 ```html
-<script src="https://unpkg.com/shipfit@1.0.3/dist/index.umd.min.js"></script>
+<script src="https://unpkg.com/shipfit@0.0.1/dist/index.umd.min.js"></script>
 
 <eve-fit id="fit">
 [Revelation, Revelation]
