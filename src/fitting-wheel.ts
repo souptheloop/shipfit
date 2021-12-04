@@ -54,15 +54,17 @@ function getSlots(fit: Fit) {
         // Rotate the image back so it's vertical
         const counterRotate = -rotate;
         let image = imgDetails.filled ?
-            `<image width="6" height="6" x="46" y="12" transform="rotate(${rotate} 50 50) rotate(${counterRotate} 49 15) " xlink:href="${imgDetails.image}" >
+            `<image width="6" height="6" x="46" y="12" transform="rotate(${rotate} 50 50) rotate(${counterRotate} 49 15)" xlink:href="${imgDetails.image}" >
 <title>${imgDetails.name}</title>
 </image>`
             : "";
 
         //#fitting-box defined later on in svg
         return `
-    <use x="45" y="11" id="slot-${i}" transform="rotate(${rotate} 50 50)" xlink:href="#fitting-box" ></use>
-    ${image}
+    <g class="module">
+        <use x="45" y="11"  transform="rotate(${rotate} 50 50)" xlink:href="#fitting-box" ></use>
+        ${image}
+    </g>
 `
     });
 
@@ -73,4 +75,8 @@ function getSlots(fit: Fit) {
 }
 
 const toImageUrl = (s: Slot) => s.filled ?
-    {image: `https://images.evetech.net/types/${s.module.type}/icon?size=32`, name:s.module.name, filled: true} : {filled: false};
+    {
+        image: `https://images.evetech.net/types/${s.module.type}/icon?size=32`,
+        name: s.module.name,
+        filled: true
+    } : {filled: false};

@@ -24,25 +24,30 @@ class Fitting extends HTMLElement implements FittingElement {
     constructor() {
         super();
         this.root = this.attachShadow({mode: "open"});
-        this.root.innerHTML = "";
     }
 
     connectedCallback() {
+        // Chrome can't see text at this point and tests can't trigger mutation observer. Just attempt to render either way for now
+        this.render(this.textContent);
+
         const observer = new MutationObserver((mutations: MutationRecord[], observer) => {
             if (mutations.length > 0) {
                 const textContent = mutations[0].addedNodes[0].textContent;
-
-                if (!textContent) {
-                    this.root.innerHTML = "Error - No fit provided";
-                }
-
-                const eftFit = new EftParser().parse(textContent || "");
-                const fit = new FittingParser().parse(eftFit);
-                this.root.innerHTML = this.getContent(fit);
+                this.render(textContent);
             }
         });
-
         observer.observe(this, {childList: true});
+    }
+
+    private render(textContent: string | null) {
+        if (!textContent) {
+            this.root.innerHTML = "Error - No fit provided";
+            return;
+        }
+
+        const eftFit = new EftParser().parse(textContent || "");
+        const fit = new FittingParser().parse(eftFit);
+        this.root.innerHTML = this.getContent(fit);
     }
 
     getContent(fit: Fit) {
