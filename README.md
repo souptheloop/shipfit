@@ -3,8 +3,7 @@
 <img alt="image of fitting wheel" width="300px" src="images/preview.png" />
 
 ## Overview
-A web component to render an EFT format fit into a visual
-representation of the ship with the fit
+A web component to render a visual representation of an EFT format fit for Eve Online.
 
 ## Examples
 [JSFiddle Live Example](https://jsfiddle.net/souptheloop/k76u48ab/9/)

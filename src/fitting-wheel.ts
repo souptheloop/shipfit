@@ -28,7 +28,6 @@ export function generateFittingWheelSvg(fit: Fit) {
 
 /*
  * Build up 31 slots around the wheel (8 highs, 8 mids, 8 lows, 3 rigs, and 3 spacers in between racks)
- *
  */
 function getSlots(fit: Fit) {
     const slotCount = 31;
