@@ -47,20 +47,23 @@ class Fitting extends HTMLElement implements FittingElement {
 
         const eftFit = new EftParser().parse(textContent || "");
         const fit = new FittingParser().parse(eftFit);
-        this.root.innerHTML = this.getContent(fit);
+
+        this.root.innerHTML = "";
+        const css = document.createElement("style");
+        css.innerHTML = this.getCss();
+
+        const div = document.createElement("div");
+        div.appendChild(generateFittingWheelSvg(fit));
+
+        this.root.append(
+            css,
+            div
+        )
     }
 
-    getContent(fit: Fit) {
-        return `<style>${this.getCss()}</style><div>${this.getHtml(fit)}</div>`
-    }
-
-    getHtml(fit: Fit) {
-        return generateFittingWheelSvg(fit)
-    }
 
     getCss() {
         return `   
-        
         .fitting-circle {
           max-width: 500px;  
         }

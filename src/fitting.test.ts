@@ -15,9 +15,9 @@ Small Focused Beam Laser II, Aurora S
             .toHaveLength(1);
 
         const lazers = shadowRoot.querySelectorAll(".module").item(0);
-        expect(lazers.querySelector("use")).toHaveAttribute("xlink:href", "#fitting-box");
+        expect(lazers.querySelector("use")).toHaveAttribute("href", "#fitting-box");
         expect(lazers.querySelector("image"))
-            .toHaveAttribute("xlink:href", "https://images.evetech.net/types/3033/icon?size=32");
+            .toHaveAttribute("href", "https://images.evetech.net/types/3033/icon?size=32");
         expect(lazers.querySelector("image title"))
             .toHaveTextContent("Small Focused Beam Laser II");
 
@@ -34,7 +34,7 @@ Small Focused Beam Laser II, Aurora S
             .toHaveLength(1);
 
         const emptyHiSlot = shadowRoot.querySelectorAll(".module").item(0);
-        expect(emptyHiSlot.querySelector("use")).toHaveAttribute("xlink:href", "#fitting-box");
+        expect(emptyHiSlot.querySelector("use")).toHaveAttribute("href", "#fitting-box");
         expect(emptyHiSlot.querySelector("image")).toBeNull();
     });
 
@@ -60,7 +60,7 @@ Small Energy Locus Coordinator II
 [Empty Rig slot]
 </ship-fit>`);
 
-        expect(shadowRoot.querySelectorAll(`.module use[xlink:href="#fitting-box"]`))
+        expect(shadowRoot.querySelectorAll(`.module use[href="#fitting-box"]`))
             .toHaveLength(13);
 
         const moduleImages = [...shadowRoot.querySelectorAll(`.module image title`)]
