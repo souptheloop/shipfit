@@ -77,8 +77,12 @@ Small Energy Locus Coordinator II
                 "Small Ancillary Armor Repairer",
                 "Small Energy Locus Coordinator II"
             ]);
+    });
 
+    it("renders empty fit", async () => {
+        const [component, shadowRoot] = await render(`<ship-fit></ship-fit>`);
 
+        expect(shadowRoot.textContent).toEqual("Error - No fit provided")
     });
 });
 
