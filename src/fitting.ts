@@ -1,6 +1,7 @@
 import {EftParser} from "./eft-parser";
 import {Fit, FittingParser} from "./fitting-parser";
 import {generateFittingWheelSvg} from "./fitting-wheel";
+import {elem, svgElem} from "./html-builder";
 
 export interface FittingElement extends HTMLElement {
 
@@ -49,25 +50,23 @@ class Fitting extends HTMLElement implements FittingElement {
         const fit = new FittingParser().parse(eftFit);
 
         this.root.innerHTML = "";
-        const css = document.createElement("style");
-        css.innerHTML = this.getCss();
-
-        const div = document.createElement("div");
-        div.appendChild(generateFittingWheelSvg(fit));
-
         this.root.append(
-            css,
-            div
+            elem("div").children(
+                this.getCss(),
+                generateFittingWheelSvg(fit)
+            ).build()
         )
     }
 
 
     getCss() {
-        return `   
+        const css = document.createElement("style");
+        css.innerHTML = `
         .fitting-circle {
           max-width: 500px;  
         }
-        `
+        `;
+        return css;
     }
 }
 

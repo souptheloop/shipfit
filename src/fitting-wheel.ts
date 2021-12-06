@@ -3,8 +3,6 @@ import {svgElem} from "./html-builder";
 
 
 export function generateFittingWheelSvg(fit: Fit) {
-    const slots = getSlots(fit);
-
     return svgElem("svg")
         .classes("fitting-circle")
         .attr("viewBox", "0 0 100 100")

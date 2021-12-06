@@ -1,11 +1,16 @@
-
 export const svgElem = (name: string) => new ElementBuilder("http://www.w3.org/2000/svg", name);
+export const elem = (name: string) => new ElementBuilder("", name);
+
 export class ElementBuilder {
     private elem: Element;
     private childNodes: Element[];
 
     constructor(ns: null | string, name: string) {
-        this.elem = document.createElementNS(ns, name);
+        if (ns !== null) {
+            this.elem = document.createElementNS(ns, name);
+        } else {
+            this.elem = document.createElement(name);
+        }
         this.childNodes = [];
     }
 
