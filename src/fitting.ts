@@ -42,11 +42,11 @@ class Fitting extends HTMLElement implements FittingElement {
 
     private render(textContent: string | null) {
         if (!textContent) {
-            this.root.innerHTML = "Error - No fit provided";
+            this.root.textContent = "Error - No fit provided";
             return;
         }
 
-        const eftFit = new EftParser().parse(textContent || "");
+        const eftFit = new EftParser().parse(textContent);
         const fit = new FittingParser().parse(eftFit);
 
         this.root.innerHTML = "";
