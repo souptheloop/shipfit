@@ -1,5 +1,5 @@
 export const svgElem = (name: string) => new ElementBuilder("http://www.w3.org/2000/svg", name);
-export const elem = (name: string) => new ElementBuilder("", name);
+export const elem = (name: string) => new ElementBuilder(null, name);
 
 export class ElementBuilder {
     private elem: Element;
