@@ -2,6 +2,7 @@ import {EftParser} from "./eft-parser";
 import {Fit, FittingParser} from "./fitting-parser";
 import {generateFittingWheelSvg} from "./fitting-wheel";
 import {elem, svgElem} from "./html-builder";
+import {CopyIcon, createIcon, TextIcon} from "./icons";
 
 export interface FittingElement extends HTMLElement {
 
@@ -13,9 +14,14 @@ interface FittingAttributes {
 
 class Fitting extends HTMLElement implements FittingElement {
     private root: ShadowRoot;
+    private originalText: string;
 
     static get observedAttributes() {
-        return []
+        return ["hide-copy"]
+    }
+
+    attributeChangedCallback() {
+        this.render(this.textContent);
     }
 
     get config(): FittingAttributes {
@@ -25,6 +31,7 @@ class Fitting extends HTMLElement implements FittingElement {
     constructor() {
         super();
         this.root = this.attachShadow({mode: "open"});
+        this.originalText = "";
     }
 
     connectedCallback() {
@@ -41,6 +48,7 @@ class Fitting extends HTMLElement implements FittingElement {
     }
 
     private render(textContent: string | null) {
+        this.originalText = textContent || "";
         if (!textContent) {
             this.root.textContent = "Error - No fit provided";
             return;
@@ -51,22 +59,57 @@ class Fitting extends HTMLElement implements FittingElement {
 
         this.root.innerHTML = "";
         this.root.append(
-            elem("div").children(
-                this.getCss(),
-                generateFittingWheelSvg(fit)
+            this.getCss(),
+            elem("div").classes("wrapper").children(
+                this.getButtonTray(),
+                generateFittingWheelSvg(fit),
             ).build()
         )
     }
 
+    getButtonTray() {
+        const buttonTray = elem("div").classes("button-tray").build();
+
+        if (!this.hasAttribute("hide-copy")) {
+            const copyIcon = createIcon(CopyIcon, "icon", "copyIcon");
+            copyIcon.addEventListener("click", () => {
+                navigator.clipboard.writeText(this.originalText);
+            });
+            buttonTray.appendChild(copyIcon);
+        }
+
+        return buttonTray;
+    }
+
 
     getCss() {
-        const css = document.createElement("style");
-        css.innerHTML = `
+        return new DOMParser().parseFromString(`
+        <style>
         .fitting-circle {
-          max-width: 500px;  
+            max-width: 500px;
+            display: inline-block;  
         }
-        `;
-        return css;
+        .wrapper {
+            position: relative;
+            display: inline;
+            
+        }
+        .button-tray {
+            position: absolute;
+            left: 93%;
+            width: 7%;
+            opacity: 40%;
+        }
+        .icon {
+        }
+        .icon:hover {
+            filter: drop-shadow(3px 3px 1px gray);
+        }
+        .icon:active {
+            transform: translateY(4px);
+        }
+        </style>
+        `, "text/html").documentElement;
     }
 }
 
