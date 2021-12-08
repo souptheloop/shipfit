@@ -119,7 +119,7 @@ function getSlots(fit: Fit): Element[]{
 
 const toImageUrl = (s: Slot) => s.filled ?
     {
-        image: `https://images.evetech.net/types/${s.module.type}/icon?size=32`,
+        image: `https://images.evetech.net/types/${s.module.type}/icon?size=64`,
         name: s.module.name,
         filled: true
     } : {filled: false};
