@@ -4,7 +4,7 @@ scriptPath=$(dirname $0)
 sqliteDb=${1?"usage is ./generate-type-data.sh <sqlite_database>"}
 
 ships=$(sqlite3 $sqliteDb << EOF
-       select json_object(
+select json_object(
   'typeID', invTypes.typeID,
   'categoryID', invGroups.categoryID,
   'typeName', invTypes.typeName,
