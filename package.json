@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
-    "typescript": "^3.9.7"
   },
   "devDependencies": {
+    "typescript": "^3.9.7",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@rollup/plugin-typescript": "^5.0.2",
     "@testing-library/dom": "^7.21.4",
