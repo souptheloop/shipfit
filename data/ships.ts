@@ -2538,5 +2538,180 @@ export var Ships = [
     "typeID": 48648,
     "categoryID": 6,
     "typeName": "Citizen Venture"
+  },
+  {
+    "typeID": 35825,
+    "categoryID": 65,
+    "typeName": "Raitaru"
+  },
+  {
+    "typeID": 35826,
+    "categoryID": 65,
+    "typeName": "Azbel"
+  },
+  {
+    "typeID": 35827,
+    "categoryID": 65,
+    "typeName": "Sotiyo"
+  },
+  {
+    "typeID": 35828,
+    "categoryID": 65,
+    "typeName": "Medium Laboratory"
+  },
+  {
+    "typeID": 35829,
+    "categoryID": 65,
+    "typeName": "Large Laboratory"
+  },
+  {
+    "typeID": 35830,
+    "categoryID": 65,
+    "typeName": "X-Large Laboratory"
+  },
+  {
+    "typeID": 35835,
+    "categoryID": 65,
+    "typeName": "Athanor"
+  },
+  {
+    "typeID": 35836,
+    "categoryID": 65,
+    "typeName": "Tatara"
+  },
+  {
+    "typeID": 35838,
+    "categoryID": 65,
+    "typeName": "Medium Observatory Array"
+  },
+  {
+    "typeID": 35839,
+    "categoryID": 65,
+    "typeName": "Large Observatory Array"
+  },
+  {
+    "typeID": 37533,
+    "categoryID": 65,
+    "typeName": "X-Large Observatory Array"
+  },
+  {
+    "typeID": 35837,
+    "categoryID": 65,
+    "typeName": "Custom gate 1"
+  },
+  {
+    "typeID": 35841,
+    "categoryID": 65,
+    "typeName": "Ansiblex Jump Gate"
+  },
+  {
+    "typeID": 35842,
+    "categoryID": 65,
+    "typeName": "Medium Administration Hub"
+  },
+  {
+    "typeID": 35843,
+    "categoryID": 65,
+    "typeName": "Large Administration Hub"
+  },
+  {
+    "typeID": 35844,
+    "categoryID": 65,
+    "typeName": "X-Large Administration Hub"
+  },
+  {
+    "typeID": 37535,
+    "categoryID": 65,
+    "typeName": "Upwell Simple Advertisement Center"
+  },
+  {
+    "typeID": 37536,
+    "categoryID": 65,
+    "typeName": "Upwell Advanced Advertisement Center"
+  },
+  {
+    "typeID": 35832,
+    "categoryID": 65,
+    "typeName": "Astrahus"
+  },
+  {
+    "typeID": 35833,
+    "categoryID": 65,
+    "typeName": "Fortizar"
+  },
+  {
+    "typeID": 35834,
+    "categoryID": 65,
+    "typeName": "Keepstar"
+  },
+  {
+    "typeID": 40340,
+    "categoryID": 65,
+    "typeName": "Upwell Palatine Keepstar"
+  },
+  {
+    "typeID": 47512,
+    "categoryID": 65,
+    "typeName": "'Moreau' Fortizar"
+  },
+  {
+    "typeID": 47513,
+    "categoryID": 65,
+    "typeName": "'Draccous' Fortizar"
+  },
+  {
+    "typeID": 47514,
+    "categoryID": 65,
+    "typeName": "'Horizon' Fortizar"
+  },
+  {
+    "typeID": 47515,
+    "categoryID": 65,
+    "typeName": "'Marginis' Fortizar"
+  },
+  {
+    "typeID": 47516,
+    "categoryID": 65,
+    "typeName": "'Prometheus' Fortizar"
+  },
+  {
+    "typeID": 45006,
+    "categoryID": 65,
+    "typeName": "♦ Sotiyo"
+  },
+  {
+    "typeID": 46363,
+    "categoryID": 65,
+    "typeName": "Guristas Forward Operating Base"
+  },
+  {
+    "typeID": 46364,
+    "categoryID": 65,
+    "typeName": "Blood Raider Forward Operating Base"
+  },
+  {
+    "typeID": 35845,
+    "categoryID": 65,
+    "typeName": "Upwell Monument AM"
+  },
+  {
+    "typeID": 49600,
+    "categoryID": 65,
+    "typeName": "Upwell Monument 1M"
+  },
+  {
+    "typeID": 49601,
+    "categoryID": 65,
+    "typeName": "Upwell Monument 1F"
+  },
+  {
+    "typeID": 37534,
+    "categoryID": 65,
+    "typeName": "Tenebrex Cyno Jammer"
+  },
+  {
+    "typeID": 35840,
+    "categoryID": 65,
+    "typeName": "Pharolux Cyno Beacon"
   }
 ]

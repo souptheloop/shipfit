@@ -7,7 +7,8 @@ ships=$(sqlite3 $sqliteDb << EOF
        select json_object('typeID', typeID, 'categoryID',  categoryID, 'typeName', typeName)
         from invTypes
         join invGroups on invTypes.groupID=invGroups.groupID
-        where categoryID=6;
+        where categoryID=6
+        or categoryID=65;
 EOF)
 
 shipArr=$(echo $ships | jq -s .)

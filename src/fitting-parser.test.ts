@@ -158,4 +158,17 @@ describe("Fitting Parser", () => {
         // });
 
     });
+
+    describe("structures", () => {
+        it("parses structures", () => {
+
+            const fit = new FittingParser().parse(eftFit("my fit", "Fortizar",
+                eftSlot("Standup Ballistic Control System II", ""),
+                eftSlot("Standup Cap Battery II", ""),
+                eftSlot("Standup Cloning Center I", ""),
+            ));
+            expect((fit.lowSlots[0] as FilledSlot).module.name).toEqual("Standup Ballistic Control System II");
+            expect(fit.lowSlots).toHaveLength(1);
+        })
+    })
 });
