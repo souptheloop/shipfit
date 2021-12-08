@@ -6,9 +6,10 @@
 A web component to render a visual representation of an EFT format fit for Eve Online.
 
 ## Examples
+[Examples](https://souptheloop.github.io/shipfit/)
 [JSFiddle Live Example](https://jsfiddle.net/souptheloop/k76u48ab/9/)
 
-### Setup
+## Setup
 Using the published bundle from unpkg
 ```html
 <script src="https://unpkg.com/shipfit@0.0.3/dist/index.umd.min.js"></script>
@@ -40,7 +41,15 @@ Capital Energy Burst Aerator II
 </ship-fit>
 ```
 
-# Caveats
+## Configuration Options
+
+The component supports the following HTML attributes
+
+| Attribute        | Default   | Description
+| ---------------- | --------- | -----------
+| hide-copy        |           | Hides the copy fitting button when set
+
+## Caveats
 * If you use this in an environment where the fitting input is untrusted, 
 you should ensure that input has been sanitized for XSS and other script injection / vulnerabilities
 before it is placed into this component.
