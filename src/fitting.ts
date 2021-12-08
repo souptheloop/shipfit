@@ -1,8 +1,8 @@
 import {EftParser} from "./eft-parser";
-import {Fit, FittingParser} from "./fitting-parser";
+import {FittingParser} from "./fitting-parser";
 import {generateFittingWheelSvg} from "./fitting-wheel";
-import {elem, svgElem} from "./html-builder";
-import {CopyIcon, createIcon, TextIcon} from "./icons";
+import {elem} from "./html-builder";
+import {CopyIcon, createIcon} from "./icons";
 
 export interface FittingElement extends HTMLElement {
 

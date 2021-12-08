@@ -3,46 +3,47 @@ import {svgElem} from "./html-builder";
 
 
 export function generateFittingWheelSvg(fit: Fit) {
+    const imageSize = 512;
     return svgElem("svg")
         .classes("fitting-circle")
-        .attr("viewBox", "10 10 80 80")
+        .attr("viewBox", "0 0 512 512")
         .children(
             svgElem("defs").children(
                 svgElem("clipPath")
                     .id("fitting-circle-image")
                     .children(
                         svgElem("circle")
-                            .attr("cx", "50")
-                            .attr("cy", "50")
-                            .attr("r", "40")
+                            .attr("cx", "256")
+                            .attr("cy", "256")
+                            .attr("r", "256")
                             .attr("fill", "none")
                             .build(),
                     )
                     .build(),
                 svgElem("polygon")
                     .id("fitting-box")
-                    .attr("points", "0,1 7,1 6,7 1,7 0,1")
+                    .attr("points", "2,2 48,2 43,48 7,48 2,2")
                     .attr("fill", "none")
                     .attr("stroke", "white")
-                    .attr("stroke-width", "0.1")
+                    .attr("stroke-width", "1")
                     .attr("stroke-dasharray", "1")
                     .build()
             ).build(),
             svgElem("image")
-                .attr("width", "100")
-                .attr("height", "100")
+                .attr("width", "512")
+                .attr("height", "512")
                 .attr("x", "0")
                 .attr("y", "0")
                 .attrNs("http://www.w3.org/1999/xlink", "href", `https://images.evetech.net/types/${fit.shipType.type}/render`)
                 .attr("clip-path", "url(#fitting-circle-image)")
                 .build(),
             svgElem("circle")
-                .attr("cx", "50")
-                .attr("cy", "50")
-                .attr("r", "35")
+                .attr("cx", "256")
+                .attr("cy", "256")
+                .attr("r", "226")
                 .attr("fill", "none")
                 .attr("stroke", "black")
-                .attr("stroke-width", "10")
+                .attr("stroke-width", "60")
                 .attr("stroke-opacity", "50%")
                 .build(),
             ...getSlots(fit)
@@ -72,14 +73,15 @@ function getSlots(fit: Fit): Element[]{
         const rotateAmount = 360 / slotCount;
         const offset = rotateAmount * 3; // shift the first slot to the left 3 positions otherwise high slots would start in the 12 o'clock position
         const rotate = (i * rotateAmount) - offset;
-
+        const center = 256;
+        const size = 50;
         const module = svgElem("g")
             .classes("module")
             .children(
                 svgElem("use")
-                    .attr("x", "45")
-                    .attr("y", "11")
-                    .attr("transform", `rotate(${rotate} 50 50)` )
+                    .attr("x", `${center-size/2}`)
+                    .attr("y", "5")
+                    .attr("transform", `rotate(${rotate} ${center} ${center})`)
                     .attrNs("http://www.w3.org/1999/xlink", "href", "#fitting-box")
                     .build()
             )
@@ -87,13 +89,16 @@ function getSlots(fit: Fit): Element[]{
 
         const counterRotate = -rotate; //Rotate the module image back around so it's vertical
         if(imgDetails.filled) {
+            const size = 46;
+
+            const yOffset = 6;
             module.appendChild(
                 svgElem("image")
-                    .attr("width", "6")
-                    .attr("height", "6")
-                    .attr("x", "46")
-                    .attr("y", "12")
-                    .attr("transform", `rotate(${rotate} 50 50) rotate(${counterRotate} 49 15)`)
+                    .attr("width", `${size}`)
+                    .attr("height", `${size}`)
+                    .attr("x", `${center - size/2}`)
+                    .attr("y", `${yOffset}`)
+                    .attr("transform", `rotate(${rotate} ${center} ${center}) rotate(${counterRotate} ${center} ${yOffset + size/2})`)
                     .attrNs("http://www.w3.org/1999/xlink", "href", imgDetails.image)
                     .children(
                         svgElem("title")
