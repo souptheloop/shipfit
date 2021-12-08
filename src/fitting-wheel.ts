@@ -5,7 +5,7 @@ import {svgElem} from "./html-builder";
 export function generateFittingWheelSvg(fit: Fit) {
     return svgElem("svg")
         .classes("fitting-circle")
-        .attr("viewBox", "0 0 100 100")
+        .attr("viewBox", "10 10 80 80")
         .children(
             svgElem("defs").children(
                 svgElem("clipPath")
