@@ -12,7 +12,7 @@ A web component to render a visual representation of an EFT format fit for Eve O
 ## Setup
 Using the published bundle from unpkg
 ```html
-<script src="https://unpkg.com/shipfit@1.0.0/dist/index.umd.min.js"></script>
+<script src="https://unpkg.com/shipfit@1.0.1/dist/index.umd.min.js"></script>
 <ship-fit>
 [Revelation, Revelation]
 Capital I-a Enduring Armor Repairer
