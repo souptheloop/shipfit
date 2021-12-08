@@ -140,6 +140,17 @@ describe("Fitting Parser", () => {
                 .toEqual("Damage Control II");
         });
 
+        it("pads missing slots", () => {
+            const fit = new FittingParser().parse(eftFit("my fit", "Caracal",
+            ));
+
+            expect(fit.highSlots).toHaveLength(5);
+            expect(fit.midSlots).toHaveLength(5);
+            expect(fit.lowSlots).toHaveLength(4);
+            expect(fit.rigSlots).toHaveLength(3);
+            expect(fit.subsystemSlots).toHaveLength(0);
+        });
+
         it("Ignores items in cargo", () => {
             //Stop parsing as soon as you find a non slottable item, all items after this are cargo
 
@@ -174,6 +185,19 @@ describe("Fitting Parser", () => {
             expect((fit.lowSlots[0] as FilledSlot).module.name).toEqual("Standup Ballistic Control System II");
             expect(fit.lowSlots).toHaveLength(1);
             expect((fit.serviceSlots[0] as FilledSlot).module.name).toEqual("Standup Cloning Center I");
+        });
+
+        it("includes correct number of service mods", () => {
+
+            const fit = new FittingParser().parse(eftFit("my fit", "Fortizar",
+                eftSlot("Standup Ballistic Control System II", ""),
+                eftSlot("Standup Cap Battery II", ""),
+                eftSlot("Standup Cloning Center I", ""),
+            ));
+            expect((fit.lowSlots[0] as FilledSlot).module.name).toEqual("Standup Ballistic Control System II");
+            expect(fit.lowSlots).toHaveLength(1);
+            expect((fit.serviceSlots[0] as FilledSlot).module.name).toEqual("Standup Cloning Center I");
+            expect(fit.serviceSlots).toHaveLength(5);
         })
     })
 });

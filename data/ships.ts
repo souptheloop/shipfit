@@ -66,7 +66,7 @@ export var Ships = [
     "lows": 2,
     "mids": 2,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -146,7 +146,7 @@ export var Ships = [
     "lows": 2,
     "mids": 2,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -196,7 +196,7 @@ export var Ships = [
     "lows": 2,
     "mids": 2,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -236,7 +236,7 @@ export var Ships = [
     "lows": 2,
     "mids": 2,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -296,7 +296,7 @@ export var Ships = [
     "lows": 2,
     "mids": 3,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -316,7 +316,7 @@ export var Ships = [
     "lows": 2,
     "mids": 3,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -683,10 +683,10 @@ export var Ships = [
     "typeID": 670,
     "categoryID": 6,
     "typeName": "Capsule",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -706,7 +706,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -836,7 +836,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 1,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -876,7 +876,7 @@ export var Ships = [
     "lows": 4,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -933,10 +933,10 @@ export var Ships = [
     "typeID": 3628,
     "categoryID": 6,
     "typeName": "Nation",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -1076,7 +1076,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -1086,7 +1086,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -1096,7 +1096,7 @@ export var Ships = [
     "lows": 0,
     "mids": 1,
     "highs": 1,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -1106,7 +1106,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -1136,7 +1136,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -1146,7 +1146,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -1156,7 +1156,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -2376,7 +2376,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -2386,7 +2386,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -2786,7 +2786,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -2796,7 +2796,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -2806,7 +2806,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -2816,7 +2816,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -2936,7 +2936,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -2946,7 +2946,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -2956,7 +2956,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -2966,7 +2966,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -2976,7 +2976,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -3066,7 +3066,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -3306,7 +3306,7 @@ export var Ships = [
     "lows": 2,
     "mids": 3,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -3316,7 +3316,7 @@ export var Ships = [
     "lows": 2,
     "mids": 3,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -3326,7 +3326,7 @@ export var Ships = [
     "lows": 3,
     "mids": 2,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -3393,10 +3393,10 @@ export var Ships = [
     "typeID": 33328,
     "categoryID": 6,
     "typeName": "Capsule - Genolution 'Auroral' 197-variant",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -3456,7 +3456,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -4203,40 +4203,40 @@ export var Ships = [
     "typeID": 34339,
     "categoryID": 6,
     "typeName": "Moros Interbus Edition",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
     "typeID": 34341,
     "categoryID": 6,
     "typeName": "Naglfar Justice Edition",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
     "typeID": 34343,
     "categoryID": 6,
     "typeName": "Phoenix Wiyrkomi Edition",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
     "typeID": 34345,
     "categoryID": 6,
     "typeName": "Revelation Sarum Edition",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -4396,7 +4396,7 @@ export var Ships = [
     "lows": 0,
     "mids": 0,
     "highs": 0,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -4573,30 +4573,30 @@ export var Ships = [
     "typeID": 35837,
     "categoryID": 65,
     "typeName": "Custom gate 1",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
     "typeID": 35838,
     "categoryID": 65,
     "typeName": "Medium Observatory Array",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
     "typeID": 35839,
     "categoryID": 65,
     "typeName": "Large Observatory Array",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -4623,30 +4623,30 @@ export var Ships = [
     "typeID": 35842,
     "categoryID": 65,
     "typeName": "Medium Administration Hub",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
     "typeID": 35843,
     "categoryID": 65,
     "typeName": "Large Administration Hub",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
     "typeID": 35844,
     "categoryID": 65,
     "typeName": "X-Large Administration Hub",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -4793,10 +4793,10 @@ export var Ships = [
     "typeID": 37533,
     "categoryID": 65,
     "typeName": "X-Large Observatory Array",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -5106,7 +5106,7 @@ export var Ships = [
     "lows": 2,
     "mids": 2,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -5116,7 +5116,7 @@ export var Ships = [
     "lows": 2,
     "mids": 2,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -5263,20 +5263,20 @@ export var Ships = [
     "typeID": 49600,
     "categoryID": 65,
     "typeName": "Upwell Monument 1M",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
     "typeID": 49601,
     "categoryID": 65,
     "typeName": "Upwell Monument 1F",
-    "lows": null,
-    "mids": null,
-    "highs": null,
-    "rigs": null,
+    "lows": 0,
+    "mids": 0,
+    "highs": 0,
+    "rigs": 0,
     "services": 0
   },
   {
@@ -5406,7 +5406,7 @@ export var Ships = [
     "lows": 2,
     "mids": 3,
     "highs": 2,
-    "rigs": null,
+    "rigs": 0,
     "services": 0
   },
   {

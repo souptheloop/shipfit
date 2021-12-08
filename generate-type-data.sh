@@ -8,10 +8,10 @@ select json_object(
   'typeID', invTypes.typeID,
   'categoryID', invGroups.categoryID,
   'typeName', invTypes.typeName,
-  'lows', lows.valueFloat,
-  'mids', mids.valueFloat,
-  'highs', highs.valueFloat,
-  'rigs', rigs.valueFloat,
+  'lows', coalesce(lows.valueFloat, 0),
+  'mids', coalesce(mids.valueFloat, 0),
+  'highs', coalesce(highs.valueFloat, 0),
+  'rigs', coalesce(rigs.valueFloat, 0),
   'services', coalesce(services.valueFloat, 0)
 )
 from invTypes
