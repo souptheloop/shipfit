@@ -53,9 +53,9 @@ export function generateFittingWheelSvg(fit: Fit) {
 /*
  * Build up 31 slots around the wheel (8 highs, 8 mids, 8 lows, 3 rigs, and 3 spacers in between racks)
  */
-function getSlots(fit: Fit): Element[]{
+function getSlots(fit: Fit): Element[] {
     const slotCount = 31;
-    const allSlotImages = new Array(slotCount).fill(null);
+    const allSlotImages: WheelSlot[] = new Array(slotCount).fill(null);
 
     const highslots = fit.highSlots.map(toImageUrl);
     const mids = fit.midSlots.map(toImageUrl);
@@ -66,58 +66,100 @@ function getSlots(fit: Fit): Element[]{
     allSlotImages.splice(18, lows.length, ...lows);
     allSlotImages.splice(27, rigs.length, ...rigs);
 
-    const boxes = allSlotImages.map((imgDetails, i) => {
 
-        if (!imgDetails) return; // No slot (different to empty slot)
+    const moduleRotations = rotationsForArc(360, 31, 3);
+    const modules = [
+        ...getSlotSvgs(6, moduleRotations, allSlotImages),
+        ...getModuleSvgs(6, moduleRotations, allSlotImages)];
 
-        const rotateAmount = 360 / slotCount;
-        const offset = rotateAmount * 3; // shift the first slot to the left 3 positions otherwise high slots would start in the 12 o'clock position
-        const rotate = (i * rotateAmount) - offset;
-        const center = 256;
-        const size = 50;
-        const module = svgElem("g")
-            .classes("module")
-            .children(
-                svgElem("use")
-                    .attr("x", `${center-size/2}`)
-                    .attr("y", "5")
-                    .attr("transform", `rotate(${rotate} ${center} ${center})`)
-                    .attrNs("http://www.w3.org/1999/xlink", "href", "#fitting-box")
-                    .build()
-            )
-            .build();
+    const ammoImages: WheelSlot[] = new Array(31).fill(null);
+    const ammoRotations = rotationsForArc(360, 31, 3);
+    const ammo = [...getModuleSvgs(35, ammoRotations, ammoImages)];
 
-        const counterRotate = -rotate; //Rotate the module image back around so it's vertical
-        if(imgDetails.filled) {
-            const size = 46;
-
-            const yOffset = 6;
-            module.appendChild(
-                svgElem("image")
-                    .attr("width", `${size}`)
-                    .attr("height", `${size}`)
-                    .attr("x", `${center - size/2}`)
-                    .attr("y", `${yOffset}`)
-                    .attr("transform", `rotate(${rotate} ${center} ${center}) rotate(${counterRotate} ${center} ${yOffset + size/2})`)
-                    .attrNs("http://www.w3.org/1999/xlink", "href", imgDetails.image)
-                    .children(
-                        svgElem("title")
-                            .text(imgDetails.name)
-                            .build()
-                    )
-                    .build()
-            )
-        }
-
-        return module;
-    });
+    const subsystemImages = fit.subsystemSlots.map(toImageUrl);
+    const subsystemRotations = rotationsForArc(90, 4, 9.5);
+    const subsystems = [
+        ...getSlotSvgs(100, subsystemRotations, subsystemImages),
+        ...getModuleSvgs(100, subsystemRotations, subsystemImages)];
 
     // Remove the empty boxes
-    return boxes.filter((b) => !!b) as Element[];
+    return [...modules, ...ammo, ...subsystems].filter((b) => !!b) as Element[];
 
 }
 
-const toImageUrl = (s: Slot) => s.filled ?
+type WheelSlot = FilledSlot | EmptySlot | null;
+
+
+function rotationsForArc(arc: number, count: number, offset: number): number[] {
+    const rotationAmount = arc / count;
+    const startOffset = offset * rotationAmount;
+
+    return new Array(count).fill(null).map((a, i) => {
+        return (i * rotationAmount) - startOffset;
+    })
+}
+
+function getSlotSvgs(yOffset: number, rotations: number[], modules: WheelSlot[]) {
+    return modules.map((imgDetails, i) => {
+
+        if (!imgDetails) return; // No slot (different to empty slot)
+
+        const rotate = rotations[i];
+
+        const center = 256;
+        const size = 50;
+        return svgElem("use")
+            .classes("slot")
+            .attr("x", `${center - size / 2}`)
+            .attr("y", `${yOffset}`)
+            .attr("transform", `rotate(${rotate} ${center} ${center})`)
+            .attrNs("http://www.w3.org/1999/xlink", "href", "#fitting-box")
+            .build()
+    });
+}
+
+
+function getModuleSvgs(yOffset: number, rotations: number[], modules: WheelSlot[]) {
+    return modules.map((imgDetails, i) => {
+
+        if (!imgDetails) return; // No slot (different to empty slot)
+
+        const rotate = rotations[i];
+        const center = 256;
+
+        const counterRotate = -rotate; //Rotate the module image back around so it's vertical
+        if (imgDetails.filled) {
+            const size = 46;
+
+            return svgElem("image")
+                .classes("module")
+                .attr("width", `${size}`)
+                .attr("height", `${size}`)
+                .attr("x", `${center - size / 2}`)
+                .attr("y", `${yOffset}`)
+                .attr("transform", `rotate(${rotate} ${center} ${center}) rotate(${counterRotate} ${center} ${yOffset + size / 2})`)
+                .attrNs("http://www.w3.org/1999/xlink", "href", imgDetails.image)
+                .children(
+                    svgElem("title")
+                        .text(imgDetails.name)
+                        .build()
+                )
+                .build();
+        }
+    });
+}
+
+interface FilledSlot {
+    filled: true,
+    image: string,
+    name: string
+}
+
+interface EmptySlot {
+    filled: false
+}
+
+const toImageUrl = (s: Slot): WheelSlot => s.filled ?
     {
         image: `https://images.evetech.net/types/${s.module.type}/icon?size=64`,
         name: s.module.name,

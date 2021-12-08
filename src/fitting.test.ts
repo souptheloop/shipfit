@@ -16,11 +16,12 @@ Small Focused Beam Laser II, Aurora S
             expect(shadowRoot.querySelectorAll(".module"))
                 .toHaveLength(1);
 
-            const lazers = shadowRoot.querySelectorAll(".module").item(0);
-            expect(lazers.querySelector("use")).toHaveAttribute("href", "#fitting-box");
-            expect(lazers.querySelector("image"))
-                .toHaveAttribute("href", "https://images.evetech.net/types/3033/icon?size=32");
-            expect(lazers.querySelector("image title"))
+            const lazerModule = shadowRoot.querySelectorAll(".module").item(0);
+            const lazerSlot = shadowRoot.querySelectorAll(".slot").item(0);
+            expect(lazerSlot).toHaveAttribute("href", "#fitting-box");
+            expect(lazerModule)
+                .toHaveAttribute("href", "https://images.evetech.net/types/3033/icon?size=64");
+            expect(lazerModule.querySelector("image title"))
                 .toHaveTextContent("Small Focused Beam Laser II");
 
         });
@@ -33,11 +34,9 @@ Small Focused Beam Laser II, Aurora S
 </ship-fit>`);
 
             expect(shadowRoot.querySelectorAll(".module"))
+                .toHaveLength(0);
+            expect(shadowRoot.querySelectorAll(".slot"))
                 .toHaveLength(1);
-
-            const emptyHiSlot = shadowRoot.querySelectorAll(".module").item(0);
-            expect(emptyHiSlot.querySelector("use")).toHaveAttribute("href", "#fitting-box");
-            expect(emptyHiSlot.querySelector("image")).toBeNull();
         });
 
         it("renders all expected slots across racks",  () => {
@@ -62,10 +61,10 @@ Small Energy Locus Coordinator II
 [Empty Rig slot]
 </ship-fit>`);
 
-            expect(shadowRoot.querySelectorAll(`.module use[href="#fitting-box"]`))
+            expect(shadowRoot.querySelectorAll(`use[href="#fitting-box"]`))
                 .toHaveLength(13);
 
-            const moduleImages = [...shadowRoot.querySelectorAll(`.module image title`)]
+            const moduleImages = [...shadowRoot.querySelectorAll(`.module title`)]
                 .map((node) => node.textContent);
 
             expect(moduleImages)
@@ -78,6 +77,26 @@ Small Energy Locus Coordinator II
                     "Nanofiber Internal Structure II",
                     "Small Ancillary Armor Repairer",
                     "Small Energy Locus Coordinator II"
+                ]);
+        });
+
+        it("renders subsystems",  () => {
+            const [component, shadowRoot] = render(`<ship-fit>
+            [Proteus, Proteus]
+            Proteus Core - Augmented Fusion Reactor
+            Proteus Defensive - Covert Reconfiguration
+</ship-fit>`);
+
+            expect(shadowRoot.querySelectorAll(`use[href="#fitting-box"].slot`))
+                .toHaveLength(2);
+
+            const moduleImages = [...shadowRoot.querySelectorAll(`.module title`)]
+                .map((node) => node.textContent);
+
+            expect(moduleImages)
+                .toEqual([
+                    "Proteus Core - Augmented Fusion Reactor",
+                    "Proteus Defensive - Covert Reconfiguration"
                 ]);
         });
 
