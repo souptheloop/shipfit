@@ -20160,6 +20160,91 @@ export var Modules = [
     "effectID": 13
   },
   {
+    "typeID": 35877,
+    "typeName": "Standup Supercapital Shipyard I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35878,
+    "typeName": "Standup Manufacturing Plant I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35880,
+    "typeName": "Standup Drug Lab I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35881,
+    "typeName": "Standup Capital Shipyard I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35886,
+    "typeName": "Standup Invention Lab I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35891,
+    "typeName": "Standup Research Lab I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35892,
+    "typeName": "Standup Market Hub I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35893,
+    "typeName": "Corporation Offices",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35894,
+    "typeName": "Standup Cloning Center I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35895,
+    "typeName": "Structure Corporation Insurance",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35896,
+    "typeName": "Structure Loyalty Point Store",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35897,
+    "typeName": "Structure Customs Office",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35898,
+    "typeName": "Structure Interbus Transport Service",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35899,
+    "typeName": "Standup Reprocessing Facility I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35912,
+    "typeName": "Standup Cynosural Field Generator I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35913,
+    "typeName": "Standup Conduit Generator I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 35914,
+    "typeName": "Standup Cynosural System Jammer I",
+    "effectID": 6306
+  },
+  {
     "typeID": 35921,
     "typeName": "Standup Anticapital Missile Launcher I",
     "effectID": 12
@@ -22955,6 +23040,26 @@ export var Modules = [
     "effectID": 11
   },
   {
+    "typeID": 45009,
+    "typeName": "Standup Moon Drill I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 45537,
+    "typeName": "Standup Composite Reactor I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 45538,
+    "typeName": "Standup Hybrid Reactor I",
+    "effectID": 6306
+  },
+  {
+    "typeID": 45539,
+    "typeName": "Standup Biochemical Reactor I",
+    "effectID": 6306
+  },
+  {
     "typeID": 45544,
     "typeName": "Standup M-Set Thukker Basic Capital Component Manufacturing Material Efficiency",
     "effectID": 2663
@@ -22968,6 +23073,11 @@ export var Modules = [
     "typeID": 45548,
     "typeName": "Standup XL-Set Thukker Structure and Component Manufacturing Efficiency",
     "effectID": 2663
+  },
+  {
+    "typeID": 45550,
+    "typeName": "Standup Hyasyoda Research Lab",
+    "effectID": 6306
   },
   {
     "typeID": 45586,

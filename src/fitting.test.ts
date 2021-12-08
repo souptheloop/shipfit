@@ -100,6 +100,24 @@ Small Energy Locus Coordinator II
                 ]);
         });
 
+        it("renders services",  () => {
+            const [component, shadowRoot] = render(`<ship-fit>
+            [Fortizar, Fortizar]
+            Standup Cloning Center I
+</ship-fit>`);
+
+            expect(shadowRoot.querySelectorAll(`use[href="#fitting-box"].slot`))
+                .toHaveLength(1);
+
+            const moduleImages = [...shadowRoot.querySelectorAll(`.module title`)]
+                .map((node) => node.textContent);
+
+            expect(moduleImages)
+                .toEqual([
+                    "Standup Cloning Center I",
+                ]);
+        });
+
         it("renders empty fit",  () => {
             const [component, shadowRoot] = render(`<ship-fit></ship-fit>`);
 

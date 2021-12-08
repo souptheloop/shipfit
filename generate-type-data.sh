@@ -22,6 +22,7 @@ select json_object('typeID', invTypes.typeID, 'typeName', typeName, 'effectID', 
        or dgmTypeEffects.effectID = 13
        or dgmTypeEffects.effectID = 2663
        or dgmTypeEffects.effectID = 3772
+       or dgmTypeEffects.effectID = 6306
        ;
 EOF)
 

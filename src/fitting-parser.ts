@@ -10,6 +10,7 @@ export type Fit = {
     lowSlots: Slot[]
     rigSlots: Slot[]
     subsystemSlots: Slot[]
+    serviceSlots: Slot[]
     cargo: CargoItem[]
 }
 
@@ -49,6 +50,7 @@ enum Slots {
     MidSlot = 13,
     RigSlot = 2663,
     SubsystemSlot = 3772,
+    ServiceSlot = 6306,
 }
 
 export class FittingParser {
@@ -68,11 +70,11 @@ export class FittingParser {
             lowSlots: [],
             rigSlots: [],
             subsystemSlots: [],
+            serviceSlots: [],
             cargo: []
         };
 
         let cargo = false;
-
         eftFit.slots.forEach((eftSlot) => {
             switch(eftSlot.module.toLowerCase()) {
                 case "[empty high slot]": fit.highSlots.push({filled: false}); return;
@@ -80,6 +82,7 @@ export class FittingParser {
                 case "[empty low slot]": fit.lowSlots.push({filled: false}); return;
                 case "[empty rig slot]": fit.rigSlots.push({filled: false}); return;
                 case "[empty subsystem slot]": fit.subsystemSlots.push({filled: false}); return;
+                case "[empty service slot]": fit.serviceSlots.push({filled: false}); return;
             }
 
             if(cargo) {
@@ -116,6 +119,9 @@ export class FittingParser {
                     break;
                 case Slots.SubsystemSlot:
                     fit.subsystemSlots.push(slot);
+                    break;
+                case Slots.ServiceSlot:
+                    fit.serviceSlots.push(slot);
                     break;
                 default: throw 'Unexpected error, no rack found for module'
             }

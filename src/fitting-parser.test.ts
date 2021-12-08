@@ -93,6 +93,7 @@ describe("Fitting Parser", () => {
                 eftSlot("[Empty Low Slot]", ""),
                 eftSlot("[Empty Rig Slot]", ""),
                 eftSlot("[Empty Subsystem Slot]", ""),
+                eftSlot("[Empty Service Slot]", ""),
             ));
 
             expect(fit.highSlots[0].filled).toBeFalsy();
@@ -100,6 +101,7 @@ describe("Fitting Parser", () => {
             expect(fit.lowSlots[0].filled).toBeFalsy();
             expect(fit.rigSlots[0].filled).toBeFalsy();
             expect(fit.subsystemSlots[0].filled).toBeFalsy();
+            expect(fit.serviceSlots[0].filled).toBeFalsy();
         });
 
         it("Allows for empty slots case insensitive", () => {
@@ -109,6 +111,7 @@ describe("Fitting Parser", () => {
                 eftSlot("[Empty Low slot]", ""),
                 eftSlot("[Empty Rig slot]", ""),
                 eftSlot("[Empty Subsystem slot]", ""),
+                eftSlot("[Empty Service slot]", ""),
             ));
 
             expect(fit.highSlots[0].filled).toBeFalsy();
@@ -116,6 +119,7 @@ describe("Fitting Parser", () => {
             expect(fit.lowSlots[0].filled).toBeFalsy();
             expect(fit.rigSlots[0].filled).toBeFalsy();
             expect(fit.subsystemSlots[0].filled).toBeFalsy();
+            expect(fit.serviceSlots[0].filled).toBeFalsy();
         });
 
         it("Allows slots to be listed in any order", () => {
@@ -160,7 +164,7 @@ describe("Fitting Parser", () => {
     });
 
     describe("structures", () => {
-        it("parses structures", () => {
+        it("parses structures with service modules", () => {
 
             const fit = new FittingParser().parse(eftFit("my fit", "Fortizar",
                 eftSlot("Standup Ballistic Control System II", ""),
@@ -169,6 +173,7 @@ describe("Fitting Parser", () => {
             ));
             expect((fit.lowSlots[0] as FilledSlot).module.name).toEqual("Standup Ballistic Control System II");
             expect(fit.lowSlots).toHaveLength(1);
+            expect((fit.serviceSlots[0] as FilledSlot).module.name).toEqual("Standup Cloning Center I");
         })
     })
 });

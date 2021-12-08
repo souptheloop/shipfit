@@ -82,8 +82,14 @@ function getSlots(fit: Fit): Element[] {
         ...getSlotSvgs(100, subsystemRotations, subsystemImages),
         ...getModuleSvgs(100, subsystemRotations, subsystemImages)];
 
+    const serviceImages = fit.serviceSlots.map(toImageUrl);
+    const serviceRotations = rotationsForArc(120, 5, 9.5);
+    const services = [
+        ...getSlotSvgs(100, serviceRotations, serviceImages),
+        ...getModuleSvgs(100, serviceRotations, serviceImages)];
+
     // Remove the empty boxes
-    return [...modules, ...ammo, ...subsystems].filter((b) => !!b) as Element[];
+    return [...modules, ...ammo, ...subsystems, ...services].filter((b) => !!b) as Element[];
 
 }
 
