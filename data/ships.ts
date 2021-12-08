@@ -390,6 +390,11 @@ export var Ships = [
     "typeName": "Skybreaker"
   },
   {
+    "typeID": 58745,
+    "categoryID": 6,
+    "typeName": "AIR Civilian Astero"
+  },
+  {
     "typeID": 620,
     "categoryID": 6,
     "typeName": "Osprey"
@@ -2145,6 +2150,11 @@ export var Ships = [
     "typeName": "Hyena"
   },
   {
+    "typeID": 60765,
+    "categoryID": 6,
+    "typeName": "Raiju"
+  },
+  {
     "typeID": 11995,
     "categoryID": 6,
     "typeName": "Onyx"
@@ -2168,6 +2178,11 @@ export var Ships = [
     "typeID": 35781,
     "categoryID": 6,
     "typeName": "Fiend"
+  },
+  {
+    "typeID": 60764,
+    "categoryID": 6,
+    "typeName": "Laelaps"
   },
   {
     "typeID": 22428,

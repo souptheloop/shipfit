@@ -2156,7 +2156,7 @@ export var Modules = [
   },
   {
     "typeID": 4409,
-    "typeName": "Target Spectrum Breaker",
+    "typeName": "Signature Radius Suppressor I",
     "effectID": 13
   },
   {
@@ -15181,17 +15181,17 @@ export var Modules = [
   },
   {
     "typeID": 25266,
-    "typeName": "Gas Cloud Harvester I",
+    "typeName": "Gas Cloud Scoop I",
     "effectID": 12
   },
   {
     "typeID": 25540,
-    "typeName": "'Crop' Gas Cloud Harvester",
+    "typeName": "'Crop' Gas Cloud Scoop ",
     "effectID": 12
   },
   {
     "typeID": 25542,
-    "typeName": "'Plow' Gas Cloud Harvester",
+    "typeName": "'Plow' Gas Cloud Scoop ",
     "effectID": 12
   },
   {
@@ -15261,7 +15261,7 @@ export var Modules = [
   },
   {
     "typeID": 25812,
-    "typeName": "Gas Cloud Harvester II",
+    "typeName": "Gas Cloud Scoop II",
     "effectID": 12
   },
   {
@@ -16416,7 +16416,7 @@ export var Modules = [
   },
   {
     "typeID": 28583,
-    "typeName": "Industrial Core I",
+    "typeName": "Capital Industrial Core I",
     "effectID": 12
   },
   {
@@ -16546,7 +16546,7 @@ export var Modules = [
   },
   {
     "typeID": 28788,
-    "typeName": "Syndicate Gas Cloud Harvester",
+    "typeName": "Syndicate Gas Cloud Scoop ",
     "effectID": 12
   },
   {
@@ -20826,12 +20826,12 @@ export var Modules = [
   },
   {
     "typeID": 37254,
-    "typeName": "Standup L-Set EW Expert System I",
+    "typeName": "Standup L-Set EW Command System I",
     "effectID": 2663
   },
   {
     "typeID": 37255,
-    "typeName": "Standup L-Set EW Expert System II",
+    "typeName": "Standup L-Set EW Command System II",
     "effectID": 2663
   },
   {
@@ -22496,7 +22496,7 @@ export var Modules = [
   },
   {
     "typeID": 42890,
-    "typeName": "Industrial Core II",
+    "typeName": "Capital Industrial Core II",
     "effectID": 12
   },
   {
@@ -24732,6 +24732,61 @@ export var Modules = [
   {
     "typeID": 56735,
     "typeName": "Tactical Capsuleer Recloner",
+    "effectID": 12
+  },
+  {
+    "typeID": 58919,
+    "typeName": "Interdiction Nullifier I",
+    "effectID": 12
+  },
+  {
+    "typeID": 58945,
+    "typeName": "Large Industrial Core I",
+    "effectID": 12
+  },
+  {
+    "typeID": 58950,
+    "typeName": "Large Industrial Core II",
+    "effectID": 12
+  },
+  {
+    "typeID": 58966,
+    "typeName": "Compact Interdiction Nullifier",
+    "effectID": 12
+  },
+  {
+    "typeID": 58971,
+    "typeName": "Restrained Interdiction Nullifier",
+    "effectID": 12
+  },
+  {
+    "typeID": 58972,
+    "typeName": "Interdiction Nullifier II",
+    "effectID": 12
+  },
+  {
+    "typeID": 60313,
+    "typeName": "Gas Cloud Harvester I",
+    "effectID": 12
+  },
+  {
+    "typeID": 60314,
+    "typeName": "Gas Cloud Harvester II",
+    "effectID": 12
+  },
+  {
+    "typeID": 60315,
+    "typeName": "Ore Gas Cloud Harvester ",
+    "effectID": 12
+  },
+  {
+    "typeID": 60482,
+    "typeName": "Mutated Drone Damage Amplifier",
+    "effectID": 11
+  },
+  {
+    "typeID": 60483,
+    "typeName": "Mutated Fighter Support Unit",
     "effectID": 12
   }
 ]
