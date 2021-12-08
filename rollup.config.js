@@ -1,6 +1,6 @@
 
 export default {
-    input: "dist/fitting.js",
+    input: "dist/src/fitting.js",
     output: {
         file: "dist/index.umd.js",
         format: "umd"

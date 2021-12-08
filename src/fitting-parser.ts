@@ -1,6 +1,6 @@
 import {EftFit} from "@/eft-parser";
-import {Ships} from "./data/ships";
-import {Modules} from "./data/modules";
+import {Ships} from "../data/ships";
+import {Modules} from "../data/modules";
 
 export type Fit = {
     shipType: Item;

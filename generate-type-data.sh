@@ -11,7 +11,7 @@ ships=$(sqlite3 $sqliteDb << EOF
 EOF)
 
 shipArr=$(echo $ships | jq -s .)
-echo "export var Ships = $shipArr" > $scriptPath/src/data/ships.ts
+echo "export var Ships = $shipArr" > $scriptPath/data/ships.ts
 
 modules=$(sqlite3 $sqliteDb << EOF
 select json_object('typeID', invTypes.typeID, 'typeName', typeName, 'effectID', effectID) from invTypes
@@ -25,4 +25,4 @@ select json_object('typeID', invTypes.typeID, 'typeName', typeName, 'effectID', 
 EOF)
 
 moduleArr=$(echo $modules | jq -s .)
-echo "export var Modules = $moduleArr" > $scriptPath/src/data/modules.ts
+echo "export var Modules = $moduleArr" > $scriptPath/data/modules.ts

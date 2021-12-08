@@ -6,8 +6,8 @@ import './fitting';
 describe("Fitting Component", () => {
 
     describe("Fitting wheel", () => {
-        it("renders module with image and slot", async () => {
-            const [component, shadowRoot] = await render(`<ship-fit>
+        it("renders module with image and slot", () => {
+            const [component, shadowRoot] = render(`<ship-fit>
 [Imperial Navy Slicer, slicer]
 
 Small Focused Beam Laser II, Aurora S
@@ -25,8 +25,8 @@ Small Focused Beam Laser II, Aurora S
 
         });
 
-        it("renders empty slot without image", async () => {
-            const [component, shadowRoot] = await render(`<ship-fit>
+        it("renders empty slot without image",  () => {
+            const [component, shadowRoot] = render(`<ship-fit>
 [Imperial Navy Slicer, slicer]
 
 [Empty High Slot]
@@ -40,8 +40,8 @@ Small Focused Beam Laser II, Aurora S
             expect(emptyHiSlot.querySelector("image")).toBeNull();
         });
 
-        it("renders all expected slots across racks", async () => {
-            const [component, shadowRoot] = await render(`<ship-fit>
+        it("renders all expected slots across racks",  () => {
+            const [component, shadowRoot] = render(`<ship-fit>
 [Imperial Navy Slicer, slicer]
 
 Heat Sink II
@@ -81,8 +81,8 @@ Small Energy Locus Coordinator II
                 ]);
         });
 
-        it("renders empty fit", async () => {
-            const [component, shadowRoot] = await render(`<ship-fit></ship-fit>`);
+        it("renders empty fit",  () => {
+            const [component, shadowRoot] = render(`<ship-fit></ship-fit>`);
 
             expect(shadowRoot.textContent).toEqual("Error - No fit provided")
         });
@@ -90,26 +90,26 @@ Small Energy Locus Coordinator II
 
     describe("Copy Fitting", () => {
 
-        it("button is visible by default", async () => {
-            const [component, shadowRoot] = await render(`<ship-fit>[Imperial Navy Slicer, slicer]</ship-fit>`);
+        it("button is visible by default",  () => {
+            const [component, shadowRoot] = render(`<ship-fit>[Imperial Navy Slicer, slicer]</ship-fit>`);
             expect(shadowRoot.querySelector(".copyIcon")).not.toBe(null)
         });
 
-        it("button can be disabled", async () => {
-            const [component, shadowRoot] = await render(`<ship-fit hide-copy>[Imperial Navy Slicer, slicer]</ship-fit>`);
+        it("button can be disabled",  () => {
+            const [component, shadowRoot] = render(`<ship-fit hide-copy>[Imperial Navy Slicer, slicer]</ship-fit>`);
             expect(shadowRoot.querySelector(".copyIcon")).toBe(null)
         });
 
-        it("button can be disabled dynamically", async () => {
-            const [component, shadowRoot] = await render(`<ship-fit>[Imperial Navy Slicer, slicer]</ship-fit>`);
+        it("button can be disabled dynamically",  () => {
+            const [component, shadowRoot] = render(`<ship-fit>[Imperial Navy Slicer, slicer]</ship-fit>`);
             expect(shadowRoot.querySelector(".copyIcon")).not.toBe(null);
 
             component.toggleAttribute("hide-copy");
             expect(shadowRoot.querySelector(".copyIcon")).toBe(null);
         });
 
-        it("copies fitting to clipboard", async () => {
-            const [component, shadowRoot] = await render(`<ship-fit>
+        it("copies fitting to clipboard",  () => {
+            const [component, shadowRoot] = render(`<ship-fit>
 [Imperial Navy Slicer, slicer]
 Small Focused Beam Laser II, Aurora S
 </ship-fit>`);
@@ -131,7 +131,7 @@ Small Focused Beam Laser II, Aurora S
     });
 });
 
-async function render(content: string): Promise<[Element, ShadowRoot]> {
+function render(content: string): [Element, ShadowRoot] {
     const testContainer = document.createElement("div");
     document.body.appendChild(testContainer);
     testContainer.innerHTML = content;
