@@ -6,8 +6,8 @@
 A web component to render a visual representation of an EFT format fit for Eve Online.
 
 ## Examples
-[Examples](https://souptheloop.github.io/shipfit/)
-[JSFiddle Live Example](https://jsfiddle.net/souptheloop/k76u48ab/9/)
+* [Examples](https://souptheloop.github.io/shipfit/)
+* [JSFiddle Live Example](https://jsfiddle.net/souptheloop/k76u48ab/9/)
 
 ## Setup
 Using the published bundle from unpkg
