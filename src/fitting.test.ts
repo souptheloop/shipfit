@@ -72,10 +72,10 @@ Small Energy Locus Coordinator II
                     "Small Focused Beam Laser II",
                     "Small Focused Beam Laser II",
                     "5MN Quad LiF Restrained Microwarpdrive",
-                    "Heat Sink II",
-                    "Compact Multispectrum Energized Membrane",
-                    "Nanofiber Internal Structure II",
                     "Small Ancillary Armor Repairer",
+                    "Nanofiber Internal Structure II",
+                    "Compact Multispectrum Energized Membrane",
+                    "Heat Sink II",
                     "Small Energy Locus Coordinator II"
                 ]);
         });
@@ -96,8 +96,8 @@ Small Energy Locus Coordinator II
 
                 expect(moduleImages)
                     .toEqual([
-                        "Proteus Core - Augmented Fusion Reactor",
-                        "Proteus Defensive - Covert Reconfiguration"
+                        "Proteus Defensive - Covert Reconfiguration",
+                        "Proteus Core - Augmented Fusion Reactor"
                     ]);
             });
 
@@ -107,6 +107,7 @@ Small Energy Locus Coordinator II
             const [component, shadowRoot] = render(`<ship-fit>
             [Fortizar, Fortizar]
             Standup Cloning Center I
+            Standup Stasis Webifier I
 </ship-fit>`);
 
             expect(shadowRoot.querySelectorAll(`use[href="#fitting-box"].slot`))
@@ -117,6 +118,7 @@ Small Energy Locus Coordinator II
 
             expect(moduleImages)
                 .toEqual([
+                    "Standup Stasis Webifier I",
                     "Standup Cloning Center I",
                 ]);
         });

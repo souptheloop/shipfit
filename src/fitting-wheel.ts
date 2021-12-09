@@ -59,7 +59,7 @@ function getSlots(fit: Fit): Element[] {
 
     const highslots = fit.highSlots.map(toImageUrl);
     const mids = fit.midSlots.map(toImageUrl);
-    const lows = fit.lowSlots.map(toImageUrl);
+    const lows = fit.lowSlots.map(toImageUrl).reverse();
     const rigs = fit.rigSlots.map(toImageUrl);
     allSlotImages.splice(0, highslots.length, ...highslots);
     allSlotImages.splice(9, mids.length, ...mids);
@@ -76,13 +76,13 @@ function getSlots(fit: Fit): Element[] {
     const ammoRotations = rotationsForArc(360, 31, 3);
     const ammo = [...getModuleSvgs(35, ammoRotations, ammoImages)];
 
-    const subsystemImages = fit.subsystemSlots.map(toImageUrl);
+    const subsystemImages = fit.subsystemSlots.map(toImageUrl).reverse();
     const subsystemRotations = rotationsForArc(90, 4, 9.5);
     const subsystems = [
         ...getSlotSvgs(100, subsystemRotations, subsystemImages),
         ...getModuleSvgs(100, subsystemRotations, subsystemImages)];
 
-    const serviceImages = fit.serviceSlots.map(toImageUrl).slice(0, 5);
+    const serviceImages = fit.serviceSlots.map(toImageUrl).slice(0, 5).reverse();
     const serviceRotations = rotationsForArc(120, 5, 9.5);
     const services = [
         ...getSlotSvgs(100, serviceRotations, serviceImages),
