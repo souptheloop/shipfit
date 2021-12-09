@@ -39,6 +39,7 @@ function item(name: string, type: number): Item {
     return {name, type};
 }
 
+const t3cs = ["Proteus", "Legion", "Tengu", "Loki"];
 
 /**
  * This parser takes the result of the EftParser and returns an actual fit
@@ -123,28 +124,32 @@ export class FittingParser {
                 case Slots.ServiceSlot:
                     fit.serviceSlots.push(slot);
                     break;
-                default: throw 'Unexpected error, no rack found for module'
+                default:
+                    throw 'Unexpected error, no rack found for module'
             }
         });
 
-        fit.highSlots = fit.highSlots.slice(0, ship.highs);
-        fit.midSlots = fit.midSlots.slice(0, ship.mids);
-        fit.lowSlots = fit.lowSlots.slice(0, ship.lows);
+        if (!t3cs.includes(ship.typeName)) {
+            fit.highSlots = fit.highSlots.slice(0, ship.highs);
+            fit.midSlots = fit.midSlots.slice(0, ship.mids);
+            fit.lowSlots = fit.lowSlots.slice(0, ship.lows);
+            fit.subsystemSlots = fit.subsystemSlots.slice(0, 4);
+        }
+
         fit.rigSlots = fit.rigSlots.slice(0, ship.rigs);
-        fit.subsystemSlots = fit.subsystemSlots.slice(0, 4);
-        while(fit.serviceSlots.length < ship.services) {
+        while (fit.serviceSlots.length < ship.services) {
             fit.serviceSlots.push({filled: false})
         }
-        while(fit.highSlots.length < ship.highs) {
+        while (fit.highSlots.length < ship.highs) {
             fit.highSlots.push({filled: false})
         }
-        while(fit.midSlots.length < ship.mids) {
+        while (fit.midSlots.length < ship.mids) {
             fit.midSlots.push({filled: false})
         }
-        while(fit.lowSlots.length < ship.lows) {
+        while (fit.lowSlots.length < ship.lows) {
             fit.lowSlots.push({filled: false})
         }
-        while(fit.rigSlots.length < ship.rigs) {
+        while (fit.rigSlots.length < ship.rigs) {
             fit.rigSlots.push({filled: false})
         }
 

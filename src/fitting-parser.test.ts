@@ -187,12 +187,29 @@ describe("Fitting Parser", () => {
         describe("subsystems", () => {
 
             it("finds subsystem items", () => {
-                const fit = new FittingParser().parse(eftFit("my fit", "Caracal",
+                const fit = new FittingParser().parse(eftFit("my fit", "Tengu",
+                    eftSlot("Compact Multispectrum Energized Membrane", ""),
                     eftSlot("Proteus Defensive - Covert Reconfiguration", "")));
 
                 const slot = fit.subsystemSlots[0] as FilledSlot;
                 expect(slot.module.name).toEqual("Proteus Defensive - Covert Reconfiguration");
-                expect(slot.module.type).toEqual(45592)
+                expect(slot.module.type).toEqual(45592);
+
+            });
+
+            const t3cs = ["Tengu", "Loki", "Legion", "Proteus"];
+            test.each(t3cs)("does not trim down modules for t3c: %s", (shipName) => {
+                const fit = new FittingParser().parse(eftFit("my fit", shipName,
+                    eftSlot("Heat Sink II", ""),
+                    eftSlot("5MN Quad LiF Restrained Microwarpdrive", ""),
+                    eftSlot("Small Focused Beam Laser II", ""),
+                    eftSlot("Small Energy Locus Coordinator II", ""),
+                ));
+
+                expect(fit.highSlots).toHaveLength(1);
+                expect(fit.midSlots).toHaveLength(1);
+                expect(fit.lowSlots).toHaveLength(1);
+                expect(fit.rigSlots).toHaveLength(3);
             });
 
             it("limits to 4 subsystem items", () => {
