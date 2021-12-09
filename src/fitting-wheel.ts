@@ -70,7 +70,7 @@ function getSlots(fit: Fit): Element[] {
     const moduleRotations = rotationsForArc(360, 31, 3);
     const modules = [
         ...getSlotSvgs(6, moduleRotations, allSlotImages),
-        ...getModuleSvgs(6, moduleRotations, allSlotImages)];
+        ...getModuleSvgs(8, moduleRotations, allSlotImages)];
 
     const ammoImages: WheelSlot[] = new Array(31).fill(null);
     const ammoRotations = rotationsForArc(360, 31, 3);
@@ -113,10 +113,10 @@ function getSlotSvgs(yOffset: number, rotations: number[], modules: WheelSlot[])
         const rotate = rotations[i];
 
         const center = 256;
-        const size = 50;
+        const slotOutlineSize = 50;
         return svgElem("use")
             .classes("slot")
-            .attr("x", `${center - size / 2}`)
+            .attr("x", `${center - slotOutlineSize / 2}`)
             .attr("y", `${yOffset}`)
             .attr("transform", `rotate(${rotate} ${center} ${center})`)
             .attrNs("http://www.w3.org/1999/xlink", "href", "#fitting-box")
@@ -135,15 +135,15 @@ function getModuleSvgs(yOffset: number, rotations: number[], modules: WheelSlot[
 
         const counterRotate = -rotate; //Rotate the module image back around so it's vertical
         if (imgDetails.filled) {
-            const size = 46;
+            const moduleImageSize = 46;
 
             return svgElem("image")
                 .classes("module")
-                .attr("width", `${size}`)
-                .attr("height", `${size}`)
-                .attr("x", `${center - size / 2}`)
+                .attr("width", `${moduleImageSize}`)
+                .attr("height", `${moduleImageSize}`)
+                .attr("x", `${center - moduleImageSize / 2}`)
                 .attr("y", `${yOffset}`)
-                .attr("transform", `rotate(${rotate} ${center} ${center}) rotate(${counterRotate} ${center} ${yOffset + size / 2})`)
+                .attr("transform", `rotate(${rotate} ${center} ${center}) rotate(${counterRotate} ${center} ${yOffset + moduleImageSize / 2})`)
                 .attrNs("http://www.w3.org/1999/xlink", "href", imgDetails.image)
                 .children(
                     svgElem("title")
