@@ -47,7 +47,8 @@ The component supports the following HTML attributes
 
 | Attribute        | Default   | Description
 | ---------------- | --------- | -----------
-| hide-copy        |           | Hides the copy fitting button when set
+| hide-copy        | not set   | Hides the copy fitting button when set
+| hide-charges     | not set   | Hides the charges inner ring
 
 ## Caveats
 * If you use this in an environment where the fitting input is untrusted, 
