@@ -77,15 +77,6 @@ describe("Fitting Parser", () => {
             expect(slot.module.type).toEqual(31159)
         });
 
-        it("finds subsystem items", () => {
-            const fit = new FittingParser().parse(eftFit("my fit", "Caracal",
-                eftSlot("Proteus Defensive - Covert Reconfiguration", "")));
-
-            const slot = fit.subsystemSlots[0] as FilledSlot;
-            expect(slot.module.name).toEqual("Proteus Defensive - Covert Reconfiguration");
-            expect(slot.module.type).toEqual(45592)
-        });
-
         it("Allows for empty slots", () => {
             const fit = new FittingParser().parse(eftFit("my fit", "Caracal",
                 eftSlot("[Empty High Slot]", ""),
@@ -160,44 +151,88 @@ describe("Fitting Parser", () => {
                 eftSlot("Damage Control II", ""),
             ));
             expect((fit.highSlots[0] as FilledSlot).module.name).toEqual("Experimental SV-2000 Rapid Light Missile Launcher");
-            expect(fit.lowSlots).toHaveLength(0);
 
             expect(fit.cargo).toHaveLength(2);
             expect(fit.cargo[0].name).toEqual("Agency 'Hardshell' TB5 Dose II");
             expect(fit.cargo[1].name).toEqual("Damage Control II");
         });
 
-        // it("Loads ammo/charge info", () => {
-        //     // Could do this in v2
-        //     expect(true).toBeFalsy();
-        // });
 
-    });
+        it("Limits module count to ship limits", () => {
+            //Stop parsing as soon as you find a non slottable item, all items after this are cargo
 
-    describe("structures", () => {
-        it("parses structures with service modules", () => {
-
-            const fit = new FittingParser().parse(eftFit("my fit", "Fortizar",
-                eftSlot("Standup Ballistic Control System II", ""),
-                eftSlot("Standup Cap Battery II", ""),
-                eftSlot("Standup Cloning Center I", ""),
+            const fit = new FittingParser().parse(eftFit("my fit", "Damavik",
+                eftSlot("200mm Steel Plates II", ""),
+                eftSlot("200mm Steel Plates II", ""),
+                eftSlot("200mm Steel Plates II", ""),
+                eftSlot("Warp Scrambler II", ""),
+                eftSlot("Warp Scrambler II", ""),
+                eftSlot("Warp Scrambler II", ""),
+                eftSlot("Warp Scrambler II", ""),
+                eftSlot("Small Infectious Scoped Energy Neutralizer", ""),
+                eftSlot("Small Infectious Scoped Energy Neutralizer", ""),
+                eftSlot("Small Infectious Scoped Energy Neutralizer", ""),
+                eftSlot("Small Infectious Scoped Energy Neutralizer", ""),
+                eftSlot("Small Trimark Armor Pump II", ""),
+                eftSlot("Small Trimark Armor Pump II", ""),
+                eftSlot("Small Trimark Armor Pump II", ""),
+                eftSlot("Small Trimark Armor Pump II", ""),
             ));
-            expect((fit.lowSlots[0] as FilledSlot).module.name).toEqual("Standup Ballistic Control System II");
-            expect(fit.lowSlots).toHaveLength(1);
-            expect((fit.serviceSlots[0] as FilledSlot).module.name).toEqual("Standup Cloning Center I");
+            expect(fit.highSlots).toHaveLength(3);
+            expect(fit.midSlots).toHaveLength(3);
+            expect(fit.lowSlots).toHaveLength(3);
+            expect(fit.rigSlots).toHaveLength(3);
         });
 
-        it("includes correct number of service mods", () => {
+        describe("subsystems", () => {
 
-            const fit = new FittingParser().parse(eftFit("my fit", "Fortizar",
-                eftSlot("Standup Ballistic Control System II", ""),
-                eftSlot("Standup Cap Battery II", ""),
-                eftSlot("Standup Cloning Center I", ""),
-            ));
-            expect((fit.lowSlots[0] as FilledSlot).module.name).toEqual("Standup Ballistic Control System II");
-            expect(fit.lowSlots).toHaveLength(1);
-            expect((fit.serviceSlots[0] as FilledSlot).module.name).toEqual("Standup Cloning Center I");
-            expect(fit.serviceSlots).toHaveLength(5);
+            it("finds subsystem items", () => {
+                const fit = new FittingParser().parse(eftFit("my fit", "Caracal",
+                    eftSlot("Proteus Defensive - Covert Reconfiguration", "")));
+
+                const slot = fit.subsystemSlots[0] as FilledSlot;
+                expect(slot.module.name).toEqual("Proteus Defensive - Covert Reconfiguration");
+                expect(slot.module.type).toEqual(45592)
+            });
+
+            it("limits to 4 subsystem items", () => {
+                const fit = new FittingParser().parse(eftFit("my fit", "Caracal",
+                    eftSlot("Proteus Defensive - Covert Reconfiguration", ""),
+                    eftSlot("Proteus Defensive - Covert Reconfiguration", ""),
+                    eftSlot("Proteus Defensive - Covert Reconfiguration", ""),
+                    eftSlot("Proteus Defensive - Covert Reconfiguration", ""),
+                    eftSlot("Proteus Defensive - Covert Reconfiguration", ""),
+                ));
+
+                expect(fit.subsystemSlots).toHaveLength(4);
+            });
+        });
+
+        describe("structures", () => {
+
+            it("parses structures with service modules", () => {
+
+                const fit = new FittingParser().parse(eftFit("my fit", "Fortizar",
+                    eftSlot("Standup Ballistic Control System II", ""),
+                    eftSlot("Standup Cap Battery II", ""),
+                    eftSlot("Standup Cloning Center I", ""),
+                ));
+                expect((fit.lowSlots[0] as FilledSlot).module.name).toEqual("Standup Ballistic Control System II");
+                expect((fit.serviceSlots[0] as FilledSlot).module.name).toEqual("Standup Cloning Center I");
+            });
+
+            it("includes correct number of service mods", () => {
+
+                const fit = new FittingParser().parse(eftFit("my fit", "Fortizar",
+                    eftSlot("Standup Ballistic Control System II", ""),
+                    eftSlot("Standup Cap Battery II", ""),
+                    eftSlot("Standup Cloning Center I", ""),
+                ));
+                expect((fit.lowSlots[0] as FilledSlot).module.name).toEqual("Standup Ballistic Control System II");
+                expect((fit.serviceSlots[0] as FilledSlot).module.name).toEqual("Standup Cloning Center I");
+                expect(fit.serviceSlots).toHaveLength(5);
+            });
+
         })
-    })
+    });
 });

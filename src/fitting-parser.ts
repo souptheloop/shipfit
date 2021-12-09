@@ -127,7 +127,11 @@ export class FittingParser {
             }
         });
 
-
+        fit.highSlots = fit.highSlots.slice(0, ship.highs);
+        fit.midSlots = fit.midSlots.slice(0, ship.mids);
+        fit.lowSlots = fit.lowSlots.slice(0, ship.lows);
+        fit.rigSlots = fit.rigSlots.slice(0, ship.rigs);
+        fit.subsystemSlots = fit.subsystemSlots.slice(0, 4);
         while(fit.serviceSlots.length < ship.services) {
             fit.serviceSlots.push({filled: false})
         }

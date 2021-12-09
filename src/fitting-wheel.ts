@@ -82,7 +82,7 @@ function getSlots(fit: Fit): Element[] {
         ...getSlotSvgs(100, subsystemRotations, subsystemImages),
         ...getModuleSvgs(100, subsystemRotations, subsystemImages)];
 
-    const serviceImages = fit.serviceSlots.map(toImageUrl);
+    const serviceImages = fit.serviceSlots.map(toImageUrl).slice(0, 5);
     const serviceRotations = rotationsForArc(120, 5, 9.5);
     const services = [
         ...getSlotSvgs(100, serviceRotations, serviceImages),

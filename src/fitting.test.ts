@@ -26,7 +26,7 @@ Small Focused Beam Laser II, Aurora S
 
         });
 
-        it("renders empty slot without image",  () => {
+        it("renders empty slot without image", () => {
             const [component, shadowRoot] = render(`<ship-fit>
 [Imperial Navy Slicer, slicer]
 
@@ -36,10 +36,10 @@ Small Focused Beam Laser II, Aurora S
             expect(shadowRoot.querySelectorAll(".module"))
                 .toHaveLength(0);
             expect(shadowRoot.querySelectorAll(".slot"))
-                .toHaveLength(1);
+                .toHaveLength(13);
         });
 
-        it("renders all expected slots across racks",  () => {
+        it("renders all expected slots across racks", () => {
             const [component, shadowRoot] = render(`<ship-fit>
 [Imperial Navy Slicer, slicer]
 
@@ -80,34 +80,37 @@ Small Energy Locus Coordinator II
                 ]);
         });
 
-        it("renders subsystems",  () => {
-            const [component, shadowRoot] = render(`<ship-fit>
+        describe("subsystems", () => {
+            it("renders subsystems", () => {
+                const [component, shadowRoot] = render(`<ship-fit>
             [Proteus, Proteus]
             Proteus Core - Augmented Fusion Reactor
             Proteus Defensive - Covert Reconfiguration
 </ship-fit>`);
 
-            expect(shadowRoot.querySelectorAll(`use[href="#fitting-box"].slot`))
-                .toHaveLength(2);
+                expect(shadowRoot.querySelectorAll(`use[href="#fitting-box"].slot`))
+                    .toHaveLength(5);
 
-            const moduleImages = [...shadowRoot.querySelectorAll(`.module title`)]
-                .map((node) => node.textContent);
+                const moduleImages = [...shadowRoot.querySelectorAll(`.module title`)]
+                    .map((node) => node.textContent);
 
-            expect(moduleImages)
-                .toEqual([
-                    "Proteus Core - Augmented Fusion Reactor",
-                    "Proteus Defensive - Covert Reconfiguration"
-                ]);
+                expect(moduleImages)
+                    .toEqual([
+                        "Proteus Core - Augmented Fusion Reactor",
+                        "Proteus Defensive - Covert Reconfiguration"
+                    ]);
+            });
+
         });
 
-        it("renders services",  () => {
+        it("renders services", () => {
             const [component, shadowRoot] = render(`<ship-fit>
             [Fortizar, Fortizar]
             Standup Cloning Center I
 </ship-fit>`);
 
             expect(shadowRoot.querySelectorAll(`use[href="#fitting-box"].slot`))
-                .toHaveLength(1);
+                .toHaveLength(23);
 
             const moduleImages = [...shadowRoot.querySelectorAll(`.module title`)]
                 .map((node) => node.textContent);
@@ -118,7 +121,32 @@ Small Energy Locus Coordinator II
                 ]);
         });
 
-        it("renders empty fit",  () => {
+        it("Limits to 5 services", () => {
+            // Structures can have more than 5 services but it seems to almost never happen so save the space and limit to 5
+            const [component, shadowRoot] = render(`<ship-fit>
+            [Keepstar, Keepstar]
+            Standup Cloning Center I
+            Standup Cloning Center I
+            Standup Cloning Center I
+            Standup Cloning Center I
+            Standup Cloning Center I
+            Standup Cloning Center I
+</ship-fit>`);
+
+            const moduleImages = [...shadowRoot.querySelectorAll(`.module title`)]
+                .map((node) => node.textContent);
+
+            expect(moduleImages)
+                .toEqual([
+                    "Standup Cloning Center I",
+                    "Standup Cloning Center I",
+                    "Standup Cloning Center I",
+                    "Standup Cloning Center I",
+                    "Standup Cloning Center I",
+                ]);
+        });
+
+        it("renders empty fit", () => {
             const [component, shadowRoot] = render(`<ship-fit></ship-fit>`);
 
             expect(shadowRoot.textContent).toEqual("Error - No fit provided")
@@ -127,17 +155,17 @@ Small Energy Locus Coordinator II
 
     describe("Copy Fitting", () => {
 
-        it("button is visible by default",  () => {
+        it("button is visible by default", () => {
             const [component, shadowRoot] = render(`<ship-fit>[Imperial Navy Slicer, slicer]</ship-fit>`);
             expect(shadowRoot.querySelector(".copyIcon")).not.toBe(null)
         });
 
-        it("button can be disabled",  () => {
+        it("button can be disabled", () => {
             const [component, shadowRoot] = render(`<ship-fit hide-copy>[Imperial Navy Slicer, slicer]</ship-fit>`);
             expect(shadowRoot.querySelector(".copyIcon")).toBe(null)
         });
 
-        it("button can be disabled dynamically",  () => {
+        it("button can be disabled dynamically", () => {
             const [component, shadowRoot] = render(`<ship-fit>[Imperial Navy Slicer, slicer]</ship-fit>`);
             expect(shadowRoot.querySelector(".copyIcon")).not.toBe(null);
 
@@ -145,7 +173,7 @@ Small Energy Locus Coordinator II
             expect(shadowRoot.querySelector(".copyIcon")).toBe(null);
         });
 
-        it("copies fitting to clipboard",  () => {
+        it("copies fitting to clipboard", () => {
             const [component, shadowRoot] = render(`<ship-fit>
 [Imperial Navy Slicer, slicer]
 Small Focused Beam Laser II, Aurora S
