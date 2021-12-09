@@ -17,7 +17,7 @@ class Fitting extends HTMLElement implements FittingElement {
     private originalText: string;
 
     static get observedAttributes() {
-        return ["hide-copy"]
+        return ["hide-copy", "hide-charges"]
     }
 
     attributeChangedCallback() {
@@ -56,13 +56,12 @@ class Fitting extends HTMLElement implements FittingElement {
 
         const eftFit = new EftParser().parse(textContent);
         const fit = new FittingParser().parse(eftFit);
-
         this.root.innerHTML = "";
         this.root.append(
             this.getCss(),
             elem("div").classes("wrapper").children(
                 this.getButtonTray(),
-                generateFittingWheelSvg(fit),
+                generateFittingWheelSvg(fit, !this.hasAttribute("hide-charges")),
             ).build()
         )
     }

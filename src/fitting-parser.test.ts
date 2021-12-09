@@ -11,7 +11,7 @@ function eftFit(fitName: string, shipType: string, ...slots: EftSlot[]): EftFit 
 }
 
 function eftSlot(module: string, ammo: string): EftSlot {
-    return {module, ammo};
+    return {module, charge: ammo};
 }
 
 describe("Fitting Parser", () => {
@@ -46,7 +46,7 @@ describe("Fitting Parser", () => {
                 eftSlot("Experimental SV-2000 Rapid Light Missile Launcher", "")));
 
             const slot = fit.highSlots[0] as FilledSlot;
-            expect(slot.module.name).toEqual("Experimental SV-2000 Rapid Light Missile Launcher")
+            expect(slot.module.name).toEqual("Experimental SV-2000 Rapid Light Missile Launcher");
             expect(slot.module.type).toEqual(8007)
         });
 
@@ -251,5 +251,20 @@ describe("Fitting Parser", () => {
             });
 
         })
+    });
+
+    describe("charges", () => {
+
+        it("adds valid charges", () => {
+            const fit = new FittingParser().parse(eftFit("my fit", "Caracal",
+                eftSlot("Experimental SV-2000 Rapid Light Missile Launcher", "Caldari Navy Mjolnir Light Missile")));
+
+            const slot = fit.highSlots[0] as FilledSlot;
+            expect(slot.module.name).toEqual("Experimental SV-2000 Rapid Light Missile Launcher");
+            expect(slot.module.type).toEqual(8007);
+            expect(slot.charged).toBeTruthy();
+            expect(slot.charge.name).toEqual("Caldari Navy Mjolnir Light Missile");
+            expect(slot.charge.type).toEqual(27387);
+        });
     });
 });

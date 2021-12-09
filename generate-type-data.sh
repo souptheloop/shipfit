@@ -43,3 +43,16 @@ EOF)
 
 moduleArr=$(echo $modules | jq -s .)
 echo "export var Modules = $moduleArr" > $scriptPath/data/modules.ts
+
+charges=$(sqlite3 $sqliteDb << EOF
+select json_object('typeID', invTypes.typeID, 'typeName', invTypes.typeName) from invTypes
+  join dgmTypeAttributes on dgmTypeAttributes.typeID=invTypes.typeID
+  join dgmAttributeTypes on dgmAttributeTypes.attributeID=dgmTypeAttributes.attributeID
+where dgmAttributeTypes.attributeName="Used with (Launcher Group)"
+or invTypes.typeName="Nanite Repair Paste"
+;
+EOF)
+
+chargeArr=$(echo $charges | jq -s .)
+echo "export var Charges = $chargeArr" > $scriptPath/data/charges.ts
+

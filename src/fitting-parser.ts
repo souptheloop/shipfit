@@ -1,6 +1,7 @@
 import {EftFit} from "@/eft-parser";
 import {Ships} from "../data/ships";
 import {Modules} from "../data/modules";
+import {Charges} from "../data/charges";
 
 export type Fit = {
     shipType: Item;
@@ -18,12 +19,14 @@ export type Slot = EmptySlot | FilledSlot
 
 export type EmptySlot = {
     filled: false
+    charged: false
 }
 
 export type FilledSlot = {
     filled: true
+    charged: boolean
     module: Item,
-    ammo: Item
+    charge: Item
 }
 
 export type Item = {
@@ -78,12 +81,12 @@ export class FittingParser {
         let cargo = false;
         eftFit.slots.forEach((eftSlot) => {
             switch(eftSlot.module.toLowerCase()) {
-                case "[empty high slot]": fit.highSlots.push({filled: false}); return;
-                case "[empty med slot]": fit.midSlots.push({filled: false}); return;
-                case "[empty low slot]": fit.lowSlots.push({filled: false}); return;
-                case "[empty rig slot]": fit.rigSlots.push({filled: false}); return;
-                case "[empty subsystem slot]": fit.subsystemSlots.push({filled: false}); return;
-                case "[empty service slot]": fit.serviceSlots.push({filled: false}); return;
+                case "[empty high slot]": fit.highSlots.push({filled: false, charged: false}); return;
+                case "[empty med slot]": fit.midSlots.push({filled: false, charged: false}); return;
+                case "[empty low slot]": fit.lowSlots.push({filled: false, charged: false}); return;
+                case "[empty rig slot]": fit.rigSlots.push({filled: false, charged: false}); return;
+                case "[empty subsystem slot]": fit.subsystemSlots.push({filled: false, charged: false}); return;
+                case "[empty service slot]": fit.serviceSlots.push({filled: false, charged: false}); return;
             }
 
             if(cargo) {
@@ -99,10 +102,14 @@ export class FittingParser {
                 return;
             }
 
+            const charge = Charges.find((charge) => charge.typeName === eftSlot.charge);
+            const slotCharge = charge ? {name: charge.typeName, type: charge.typeID} : {name: "", type: -1};
+
             const slot = {
                 filled: true,
+                charged: !!charge,
                 module: {name: module.typeName, type: module.typeID},
-                ammo: {name: "", type: -1}
+                charge: slotCharge
             } as FilledSlot;
 
             switch(module.effectID as Slots) {
@@ -138,19 +145,19 @@ export class FittingParser {
 
         fit.rigSlots = fit.rigSlots.slice(0, ship.rigs);
         while (fit.serviceSlots.length < ship.services) {
-            fit.serviceSlots.push({filled: false})
+            fit.serviceSlots.push({filled: false, charged: false})
         }
         while (fit.highSlots.length < ship.highs) {
-            fit.highSlots.push({filled: false})
+            fit.highSlots.push({filled: false, charged: false})
         }
         while (fit.midSlots.length < ship.mids) {
-            fit.midSlots.push({filled: false})
+            fit.midSlots.push({filled: false, charged: false})
         }
         while (fit.lowSlots.length < ship.lows) {
-            fit.lowSlots.push({filled: false})
+            fit.lowSlots.push({filled: false, charged: false})
         }
         while (fit.rigSlots.length < ship.rigs) {
-            fit.rigSlots.push({filled: false})
+            fit.rigSlots.push({filled: false, charged: false})
         }
 
         return fit;

@@ -38,10 +38,10 @@ describe("EFT Parser", () => {
             `);
 
             expect(fit.slots[0].module).toEqual("my unloaded gun");
-            expect(fit.slots[0].ammo).toBeUndefined();
+            expect(fit.slots[0].charge).toBeUndefined();
 
             expect(fit.slots[1].module).toEqual("my loaded gun");
-            expect(fit.slots[1].ammo).toEqual("some ammo")
+            expect(fit.slots[1].charge).toEqual("some ammo")
         });
 
         it("parses lines to slots when extra spaces", () => {
@@ -51,10 +51,10 @@ describe("EFT Parser", () => {
             `);
 
             expect(fit.slots[0].module).toEqual("my unloaded gun");
-            expect(fit.slots[0].ammo).toBeUndefined();
+            expect(fit.slots[0].charge).toBeUndefined();
 
             expect(fit.slots[1].module).toEqual("my loaded gun");
-            expect(fit.slots[1].ammo).toEqual("some ammo")
+            expect(fit.slots[1].charge).toEqual("some ammo")
         });
 
 

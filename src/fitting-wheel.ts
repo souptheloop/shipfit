@@ -2,7 +2,7 @@ import {Fit, Slot} from "./fitting-parser";
 import {svgElem} from "./html-builder";
 
 
-export function generateFittingWheelSvg(fit: Fit) {
+export function generateFittingWheelSvg(fit: Fit, renderCharges: boolean) {
     const imageSize = 512;
     return svgElem("svg")
         .classes("fitting-circle")
@@ -46,50 +46,58 @@ export function generateFittingWheelSvg(fit: Fit) {
                 .attr("stroke-width", "60")
                 .attr("stroke-opacity", "50%")
                 .build(),
-            ...getSlots(fit)
+            ...getSlots(fit, renderCharges)
         ).build();
+}
+
+function getModuleImages(fit: Fit, renderFn: typeof toModuleData) {
+    const slotCount = 31;
+    const allSlotImages: WheelSlot[] = new Array(slotCount).fill(null);
+
+    const highslots = fit.highSlots.map(renderFn);
+    const mids = fit.midSlots.map(renderFn);
+    const lows = fit.lowSlots.map(renderFn).reverse();
+    const rigs = fit.rigSlots.map(renderFn);
+    allSlotImages.splice(0, highslots.length, ...highslots);
+    allSlotImages.splice(9, mids.length, ...mids);
+    allSlotImages.splice(18, lows.length, ...lows);
+    allSlotImages.splice(27, rigs.length, ...rigs);
+    return allSlotImages;
 }
 
 /*
  * Build up 31 slots around the wheel (8 highs, 8 mids, 8 lows, 3 rigs, and 3 spacers in between racks)
  */
-function getSlots(fit: Fit): Element[] {
-    const slotCount = 31;
-    const allSlotImages: WheelSlot[] = new Array(slotCount).fill(null);
-
-    const highslots = fit.highSlots.map(toImageUrl);
-    const mids = fit.midSlots.map(toImageUrl);
-    const lows = fit.lowSlots.map(toImageUrl).reverse();
-    const rigs = fit.rigSlots.map(toImageUrl);
-    allSlotImages.splice(0, highslots.length, ...highslots);
-    allSlotImages.splice(9, mids.length, ...mids);
-    allSlotImages.splice(18, lows.length, ...lows);
-    allSlotImages.splice(27, rigs.length, ...rigs);
-
+function getSlots(fit: Fit, renderCharges: boolean): Element[] {
+    // TODO module click events (for consumers)
+    const allSlotImages = getModuleImages(fit, toModuleData);
+    const allChargeImages = getModuleImages(fit, toChargeData);
 
     const moduleRotations = rotationsForArc(360, 31, 3);
     const modules = [
         ...getSlotSvgs(6, moduleRotations, allSlotImages),
         ...getModuleSvgs(8, moduleRotations, allSlotImages)];
 
-    const ammoImages: WheelSlot[] = new Array(31).fill(null);
-    const ammoRotations = rotationsForArc(360, 31, 3);
-    const ammo = [...getModuleSvgs(35, ammoRotations, ammoImages)];
+    const charges = [];
+    if (renderCharges) {
+        const chargeRotations = rotationsForArc(360, 31, 3);
+        charges.push(...getModuleSvgs(40, chargeRotations, allChargeImages));
+    }
 
-    const subsystemImages = fit.subsystemSlots.map(toImageUrl).reverse();
+    const subsystemImages = fit.subsystemSlots.map(toModuleData).reverse();
     const subsystemRotations = rotationsForArc(90, 4, 9.5);
     const subsystems = [
         ...getSlotSvgs(100, subsystemRotations, subsystemImages),
         ...getModuleSvgs(100, subsystemRotations, subsystemImages)];
 
-    const serviceImages = fit.serviceSlots.map(toImageUrl).slice(0, 5).reverse();
+    const serviceImages = fit.serviceSlots.map(toModuleData).slice(0, 5).reverse();
     const serviceRotations = rotationsForArc(120, 5, 9.5);
     const services = [
         ...getSlotSvgs(100, serviceRotations, serviceImages),
         ...getModuleSvgs(100, serviceRotations, serviceImages)];
 
     // Remove the empty boxes
-    return [...modules, ...ammo, ...subsystems, ...services].filter((b) => !!b) as Element[];
+    return [...modules, ...charges, ...subsystems, ...services].filter((b) => !!b) as Element[];
 
 }
 
@@ -165,9 +173,16 @@ interface EmptySlot {
     filled: false
 }
 
-const toImageUrl = (s: Slot): WheelSlot => s.filled ?
+const toModuleData = (s: Slot): WheelSlot => s.filled ?
     {
         image: `https://images.evetech.net/types/${s.module.type}/icon?size=64`,
         name: s.module.name,
+        filled: true
+    } : {filled: false};
+
+const toChargeData = (s: Slot): WheelSlot => s.charged ?
+    {
+        image: `https://images.evetech.net/types/${s.charge.type}/icon?size=64`,
+        name: s.charge.name,
         filled: true
     } : {filled: false};

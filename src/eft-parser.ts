@@ -7,7 +7,7 @@ export type EftFit = {
 
 export type EftSlot = {
     module: string,
-    ammo: string
+    charge: string
 }
 
 /**
@@ -25,9 +25,9 @@ export class EftParser {
     }
 
     parseLine(line: string): EftSlot {
-        const [module, ammo] = line.split(",");
+        const [module, charge] = line.split(",");
 
-        return {module: module.trim(), ammo: ammo?.trim()}
+        return {module: module.trim(), charge: charge?.trim()}
     }
 
     parse(fit: string): EftFit {
